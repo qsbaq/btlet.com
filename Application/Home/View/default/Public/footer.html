@@ -1,0 +1,74 @@
+
+    <!-- 底部
+    ================================================== -->
+    
+    
+    <footer class="footer middle">
+        <div class="container">
+            <p>{:C('WEB_SITE_TITLE')} is a Torrent Search Engine based on DHT protocol. All resources are automatically indexed from the DHT network. Instead of torrent files, we store meta information only for indexing.</p>
+            <p>{:C('WEB_SITE_TITLE')} Total indexing : <?php echo number_format($total);?> </p>
+            <!--/友情链接开始-->
+            <p>Links：<?php foreach($friendLink as $jLink => $jName):?><a href="<?php echo $jLink?>" target="_blank"><?php echo $jName;?></a> <?php endforeach;?></p>
+            <!--/友情链接结束-->
+            <p class="text-muted">
+                @2016 <a href="{:U(Index/Index);}"><?php echo TITLE;?></a>  | <a href="<?php echo DOMAIN_PATH;?>about.php">About</a>
+            </p>
+            <?php echo STATISTICS;?>
+        </div>
+    </footer>
+    
+    
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="__STATIC__/assets/js/jquery.highlight.js"></script>
+
+    <script type="text/javascript">   
+        window.onload = function() {
+            document.getElementById("search").focus();
+        };
+        $("#search").keypress(function() {
+            if (event.which == 13) {
+                onSearch(search, 1, "")
+            }
+        });
+        function onSearch(id, page, order) {
+            var keyword = trim($(id).val());
+            console.log(keyword,1);
+            if (keyword === "") {
+                return;
+            }
+            var search = '{:U("Index/Search",array("s"=>"-keyword-"))}';
+            url = search.replace("-keyword-", keyword); 
+            console.log( url );
+            window.location.href = url;
+        }
+        function trim(str){ //删除左右两端的空格
+            return str.replace(/(^\s*)|(\s*$)/g, "");
+        }
+        var clipboard = new Clipboard('#btnCopy');
+        clipboard.on('success', function(e) {
+            $('#btnCopy').tooltip('show');
+//            setTimeout(sharedModal, 1000);
+        })
+//        $('#btnCopy').on('hidden.bs.tooltip', function() {
+//            $('#btnCopy').tooltip('destroy');
+//        })
+
+        <?php if( isset($keyword ))://关键词高亮?>
+        $(document).ready(function(){
+            var key = '<?php echo $keyword;?>';
+            $('.isSearch #list-panel').highlight(key);//显示高亮
+            $('#search').val(key);
+        });
+        <?php endif;?>   
+    </script>
+
+    
+<include file="Public/var"/>
+<block name="script"></block> <!-- 用于加载js代码 -->
+<!-- 页面footer钩子，一般用于加载插件JS文件和JS代码 -->
+{:hook('pageFooter', 'widget')}
+<div class="hidden"><!-- 用于加载统计代码等隐藏元素 -->
+	<block name="hidden"></block>
+</div>

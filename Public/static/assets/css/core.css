@@ -1,0 +1,79 @@
+/* 作者：老季
+ * 网址：http://www.jiloc.com/
+ * 2016/8/25
+*/
+body,.row,.col-md-6{ margin: 0 auto; text-align: center; max-width: 1024px;}
+.index-header{ width: 100%; height: 24px; line-height: 24px;}
+.col-xs-6 { width: 100%; max-width: 680px; float: none;}
+.isRanking .col-xs-6 { width: 100%; max-width: 980px;}
+
+.isIndex{ margin:16% auto;}
+.isIndex .middle input{ float: left; width: 558px;}
+.isIndex .index-search{ text-align: center; width: 100%; clear: both;height:48px;}
+.isIndex .middle button{ float: left;}
+.col-md-6{ height: 100%;}
+.recommend a{
+    text-decoration: none;
+    font-size: 16px;
+    color: #5CB85C;
+    margin-right:24px;
+}
+.isRanking .navbar-header img , .isSearch .navbar-header img , .isShow .navbar-header img{ width:150px;}
+.isSearch .row,.search-title{ text-align: left;}
+.isSearch .search-title input,.isShow .search-title input,.isRanking .search-title input{width: 500px;}
+.isSearch #search-count{ margin-top: 24px;}
+nav.middle{ text-align: center;}
+
+.menu-nav a {
+    display: inline-block;
+    color: #666;
+    font-size: 14px;
+    margin-right: 11px;
+    padding: 0px 3px;
+}
+.menu-nav a:hover {
+    text-decoration: none;
+    color: #000;
+}
+.menu-nav a.selected {
+    font-weight: bold;
+    color: #5CB85C;
+    border-bottom: 3px solid #5CB85C;
+}
+.result-pagination a {
+    display: inline-block;
+    font-size: 14px;
+    /*margin-right: 8px;*/
+    font-weight: normal;
+}
+
+.isShow .row{ text-align: left;}
+.isShow .panel-body button{ margin-right: 12px;}
+.isSearch #list-panel,.isShow .panel-body,.isRanking .panel-body{word-wrap:break-word;word-break:break-all;}
+
+
+.isSearch .header,.isShow .header{ margin:12px;}
+.isSearch .collapse,.isShow .collapse,.isRanking .collapse{ display: block;}
+
+
+
+@media screen and (max-width:600px) {
+    .isIndex .middle input,.isSearch .search-title input,.isShow .search-title input,.isRanking .search-title input{width: 66%;}
+    .search-title input{ float: left;}
+    .isRanking .col-xs-6{padding:0px;}
+}
+@media screen and (min-width:1200px) {
+    .container{width:100%;}
+}
+
+/**
+ * Ranking.php
+ * 
+**/
+.isRanking table{ text-align: left;}
+.isRanking .col-xs-6 { width: 100%; float: none;}
+
+
+.highlight { color: red; font-weight:bold; }
+.jjump{ line-height:36px; margin-left: 12px;}
+.isAbout #list-panel img { margin: 12px auto 12px 24px; width:100%;}

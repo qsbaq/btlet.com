@@ -1,0 +1,31 @@
+<extend name="Base/common"/>
+
+<block name="body">
+        <!-- Index
+        ================================================== -->
+    <div class="container-fluid content isIndex">
+        <div class="row">
+            <div class="col-xs-6 col-md-6">
+                <div class="middle">
+                    <div class="logo">
+                        <a href="{:U('Index/Index')}" title="{:C('WEB_SITE_TITLE')}"><img src="__STATIC__/assets/img/logo.png" alt="<?php echo TITLE;?>" /></a>
+                    </div>
+                    <div class="middle title">
+                        <p>{:C('WEB_SITE_DESCRIPTION')}</p>
+                    </div>
+                    <div class="index-search">
+                        <input type="text" class="form-control input-lg input-search square" id="search" name="q" placeholder="Movies,actors,or What do you want ?. . .">
+                        <button type="submit" class="btn btn-lg btn-success square index-search-btn" onclick="onSearch(search,1,'x')">Search</button>
+                    </div>
+
+                    <div class="recommend" id="recommend-list">
+
+                    </div>
+                </div>
+                <div class="middle search">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

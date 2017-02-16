@@ -1,0 +1,29 @@
+<extend name="Base/common"/>
+
+<block name="body">
+        <!-- Index
+        ================================================== -->
+
+
+    <div class="container-fluid content isSearch">
+        <include file='Public/header'/>
+        <div class="row  custom-panel">
+            <div class="col-xs-6 col-md-7">
+                <div id="list-panel">
+                    <p id="search-count">Found {$_total} items for {$title}</p><br/>
+                <volist name="list" id="data">
+                    <h5><a href="#" class="result-title"title="{$data['name']}">{$data['name']}</a></h5>
+                    By Time:<span class="listinfo">{$data["update_time"]}</span>
+                    <p></p><br>
+                </volist>
+                </div>
+                <nav class="middle">
+                    <ul class="pagination result-pagination">
+                        {$_page}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+        
+</block>        

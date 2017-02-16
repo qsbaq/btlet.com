@@ -5,9 +5,9 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
-	//"strings"
-	//"net/http/pprof"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/shiyanhui/dht"
@@ -22,19 +22,21 @@ type bitTorrent struct {
 	InfoHash string `json:"infohash"`
 	Name     string `json:"name"`
 	Files    []file `json:"files,omitempty"`
-	//Files  string `json:"files"`
-	Length int `json:"length,omitempty"`
+	Length   int    `json:"length,omitempty"`
 }
 
 func main() {
-	db, err := sql.Open("mysql", "root:jjjjjj@tcp(localhost:3306)/btlet?charset=utf8")
+	db, err := sql.Open("mysql", "btlet:jjjjjj@tcp(v.laoji.org:3306)/btlet?charset=utf8")
 	checkErr(err)
+	defer db.Close()
 
-	stmt, err := db.Prepare(`INSERT infohash (infohash,name,files) values (?,?,?)`)
+	stmt, err := db.Prepare(`INSERT laoji_infohash (infohash,name,files) values (?,?,?)`)
 	checkErr(err)
+	defer stmt.Close()
 
 	go func() {
-		http.ListenAndServe(":6060", nil)
+		http.ListenAndServe(":8081", nil)
+		log.Panicln("Begin to Listen Port : 8081 ")
 	}()
 
 	w := dht.NewWire(65536, 1024, 256)
@@ -70,33 +72,19 @@ func main() {
 				bt.Length = info["length"].(int)
 			}
 
-			//fmt.Println(bt.Files)
-
 			json_files, _ := json.Marshal(bt.Files)
 
 			res, err := stmt.Exec(bt.InfoHash, bt.Name, string(json_files))
 			if err != nil {
-				if myerr, ok := err.(mysql.MySQLError); ok {
-					myerr.Number == "1062"
-					fmt.Println("Duplicate entry")
-				} else {
-					panic(err)
-				}
+				fmt.Println(err.Error())
 			} else {
 				if _, err = res.LastInsertId(); err != nil {
 					panic(err)
 				}
 			}
 
-			fmt.Println(bt)
-			/*
-				data, err := json.Marshal(bt)
-
-				if err == nil {
-
-					fmt.Printf("%s\n\n", data)
-				}
-			*/
+			log.Println(bt)
+			time.Sleep(1 * time.Second)
 		}
 	}()
 	go w.Run()
@@ -113,6 +101,5 @@ func main() {
 func checkErr(err error) {
 	if err != nil {
 		panic(err)
-
 	}
 }
