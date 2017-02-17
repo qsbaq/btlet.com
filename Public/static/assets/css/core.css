@@ -1,12 +1,13 @@
 /* 作者：老季
- * 网址：http://www.jiloc.com/
+ * 网址：http://laoji.org/
  * 2016/8/25
 */
 body,.row,.col-md-6{ margin: 0 auto; text-align: center; max-width: 1024px;}
 .index-header{ width: 100%; height: 24px; line-height: 24px;}
 .col-xs-6 { width: 100%; max-width: 680px; float: none;}
 .isRanking .col-xs-6 { width: 100%; max-width: 980px;}
-
+.file_list{ font-size:14px;font-weight: normal;}
+.file_list ul li{ margin: 6px;}
 .isIndex{ margin:16% auto;}
 .isIndex .middle input{ float: left; width: 558px;}
 .isIndex .index-search{ text-align: center; width: 100%; clear: both;height:48px;}
@@ -22,6 +23,7 @@ body,.row,.col-md-6{ margin: 0 auto; text-align: center; max-width: 1024px;}
 .isSearch .row,.search-title{ text-align: left;}
 .isSearch .search-title input,.isShow .search-title input,.isRanking .search-title input{width: 500px;}
 .isSearch #search-count{ margin-top: 24px;}
+.isSearch .file_list{ height: 60px; overflow: hidden;}
 nav.middle{ text-align: center;}
 
 .menu-nav a {
@@ -45,6 +47,7 @@ nav.middle{ text-align: center;}
     font-size: 14px;
     /*margin-right: 8px;*/
     font-weight: normal;
+    margin:3px;
 }
 
 .isShow .row{ text-align: left;}

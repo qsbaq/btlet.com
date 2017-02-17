@@ -15,20 +15,30 @@ namespace Home\Controller;
  */
 class IndexController extends HomeController {
 
-	//系统首页
+    //系统首页
     public function index(){
         $this->display();
     }
     
-    
-    
+    // 搜索列表
     public function search(){
         $MShipInfo = M('infohash');
         $s = I("s");
-        $lists = $this->lists($MShipInfo,array('files' => array('like','%'.$s.'%')),'id DESC');
-        $this->assign('title',$s);
+        $lists = $this->lists($MShipInfo,array('name|files' => array('like','%'.$s.'%')),'id DESC');
+        $this->assign('the_title',$s);
     	$this->assign('list',$lists);
     	$this->display();
-        
     }
+    
+    //  详情页
+    public function show(){
+        $data = M('infohash')->where(array(
+            'infohash'  =>  I('hash'),
+        ))->find();
+        //print_r($data);
+        $this->assign('the_title',$data['name']);
+        $this->assign('data',$data);
+        $this->display();
+    }
+    
 }

@@ -9,28 +9,16 @@
 			<div class="sys-info">
 				<table>
 					<tr>
-						<th>总策划</th>
-						<td>刘晨</td>
-					</tr>
-					<tr>
-						<th>产品设计及研发团队</th>
-						<td>刘晨 左家梓 朱亚杰 杨维杰 花杰</td>
-					</tr>
-					<tr>
-						<th>界面及用户体验团队</th>
-						<td>朱亚杰 余旺 彭思思</td>
-					</tr>
-					<tr>
-						<th>官方网址</th>
-						<td><a href="http://www.onethink.cn" target="_blank">www.onethink.cn</a></td>
+						<th>演示网址</th>
+						<td><a href="http://www.btlet.com" target="_blank">www.btlet.com</a></td>
 					</tr>
 					<tr>
 						<th>官方QQ群</th>
-						<td><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=14ba57a5273cc820d298cc394227276b22177217e413dfe658aa3d3b34c119e0"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="OneThink技术交流" title="OneThink技术交流"></a></td>
+						<td>217848108</td>
 					</tr>
 					<tr>
 						<th>BUG反馈</th>
-						<td><a href="http://www.onethink.cn/cate/bug.html" target="_blank">OneThink讨论区</a></td>
+						<td><a href="http://www.onethink.cn/cate/bug.html" target="_blank">老季博客</a></td>
 					</tr>
 				</table>
 			</div>

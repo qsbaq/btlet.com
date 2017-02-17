@@ -1,25 +1,36 @@
 <extend name="Base/common"/>
 
 <block name="body">
-        <!-- Index
-        ================================================== -->
-
-
+    <!-- Search
+    ================================================== -->
     <div class="container-fluid content isSearch">
         <include file='Public/header'/>
         <div class="row  custom-panel">
             <div class="col-xs-6 col-md-7">
                 <div id="list-panel">
-                    <p id="search-count">Found {$_total} items for {$title}</p><br/>
+                    <p id="search-count">Found {$_total} items for {$the_title}</p><br/>
                 <volist name="list" id="data">
-                    <h5><a href="#" class="result-title"title="{$data['name']}">{$data['name']}</a></h5>
+                <?php 
+                    $the_hash = 'magnet:?xt=urn:btih:'.$data['infohash'];
+                    $the_files = json_decode($data['files'],TRUE);
+                    $the_href = str_replace('Index/search/','',U('',array('show'=>$data['infohash'])));
+                ?>
+
+                <h5><a href="{$the_href}" class="result-title"title="{$data['name']}">{$data['name']}</a></h5>
                     By Time:<span class="listinfo">{$data["update_time"]}</span>
+                        <div  class='file_list'>
+                            <ul id="file-list" class='file_list'>
+                                <volist name='the_files' id='files'>
+                                <li>{$files['path'][0]} {$files['path'][1]} ({$files['length']})</li>
+                                </volist>
+                            </ul>
+                        </div>
                     <p></p><br>
                 </volist>
                 </div>
                 <nav class="middle">
                     <ul class="pagination result-pagination">
-                        {$_page}
+                        <?php echo str_replace(array('Index/search/','/m/Home'),'',$_page);?>
                     </ul>
                 </nav>
             </div>

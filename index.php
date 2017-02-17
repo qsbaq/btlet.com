@@ -21,11 +21,17 @@ define ( 'APP_DEBUG', true );
  */
 define ( 'APP_PATH', './Application/' );
 
+//绑定Home模块
+//define('BIND_MODULE','Home');
+
+//绑定Index控制器
+//define('BIND_CONTROLLER','Index');
+
 if(!is_file(APP_PATH . 'User/Conf/config.php')){
 	header('Location: ./install.php');
 	exit;
 }
-//define('BIND_MODULE', 'Home');
+
 /**
  * 缓存目录设置
  * 此目录必须可写，建议移动到非WEB目录

@@ -16,8 +16,7 @@ return array(
     'AUTOLOAD_NAMESPACE' => array('Addons' => ONETHINK_ADDON_PATH), //扩展模块列表
     'DEFAULT_MODULE'     => 'Home',
     'MODULE_DENY_LIST'   => array('Common', 'User'),
-    //'MODULE_ALLOW_LIST'  => array('Home','Admin'),
-    'DEFAULT_GROUP'  => 'Home', //默认分组
+    'MODULE_ALLOW_LIST'  => array('Home','Admin'),
 
     /* 系统数据加密设置 */
     'DATA_AUTH_KEY' => 'LmCx:2E+z[!kD"1N>U~3cB{f9WSqZt]Tl/V&PM|0', //默认数据加密KEY
@@ -40,19 +39,20 @@ return array(
 
     /* 数据库配置 */
     'DB_TYPE'   => 'mysqli', // 数据库类型
-    'DB_HOST'   => 'v.laoji.org', // 服务器地址
+    'DB_HOST'   => '127.0.0.1', // 服务器地址
     'DB_NAME'   => 'btlet', // 数据库名
     'DB_USER'   => 'btlet', // 用户名
     'DB_PWD'    => 'jjjjjj',  // 密码
     'DB_PORT'   => '3306', // 端口
+    'DB_CHARSET' => 'utf8mb4',
     'DB_PREFIX' => 'laoji_', // 数据库表前缀
 
     /* 文档模型配置 (文档模型核心配置，请勿更改) */
     'DOCUMENT_MODEL_TYPE' => array(2 => '主题', 1 => '目录', 3 => '段落'),
-    
-    'URL_ROUTER_ON'   => true, //开启路由
-    'URL_ROUTE_RULES' => array( //定义路由规则
-        //'s/:s'  => 'Home/Index/S',
-
-    ),
+    'URL_ROUTER_ON'         => true,
+    'URL_ROUTE_RULES'       =>  array(
+        's/:s'          =>  'Home/Index/Search',
+        's/:s/p/:p'     =>  'Home/Index/Search',
+        'show/:hash'    =>  'Home/Index/Show',
+        ), // 默认路由规则 针对模块
 );

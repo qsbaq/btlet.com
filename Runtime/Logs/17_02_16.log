@@ -23058,3 +23058,125 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTrace [ RunTime:0.002000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
 
+[ 2017-02-16T17:08:58+08:00 ] 127.0.0.1 /Admin/Addons/index.html
+SQL: SHOW COLUMNS FROM `laoji_menu` [ RunTime:0.178010s ]
+SQL: SELECT * FROM `laoji_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.181011s ]
+SQL: SELECT `id` FROM `laoji_menu` WHERE ( url like '%Addons/index%' ) LIMIT 1   [ RunTime:0.177010s ]
+SQL: SHOW COLUMNS FROM `laoji_menu` [ RunTime:0.182010s ]
+SQL: SELECT `id`,`pid`,`title` FROM `laoji_menu` WHERE ( id=43 ) LIMIT 1   [ RunTime:0.177011s ]
+SQL: SELECT DISTINCT  `group` FROM `laoji_menu` WHERE ( pid = 43 )  [ RunTime:0.177010s ]
+SQL: SELECT `id`,`url` FROM `laoji_menu` WHERE ( `pid` = 43 ) AND ( `hide` = 0 )  [ RunTime:0.179010s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `laoji_menu` WHERE ( `group` = '扩展' ) AND ( `pid` = 43 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.176010s ]
+SQL: SELECT `id`,`name`,`title`,`description`,`status`,`config`,`author`,`version`,`create_time`,`has_adminlist` FROM `laoji_addons` WHERE ( `name` IN ('Attachment','DevTeam','Editor','EditorForAdmin','SiteStat','SocialComment','SystemInfo') )  [ RunTime:0.178010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `laoji_addons` [ RunTime:0.181011s ]
+SQL: SELECT `config` FROM `laoji_addons` WHERE ( `name` = 'Attachment' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.183010s ]
+SQL: SELECT `config` FROM `laoji_addons` WHERE ( `name` = 'SocialComment' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.179011s ]
+SQL: SELECT `config` FROM `laoji_addons` WHERE ( `name` = 'Editor' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.181010s ]
+SQL: SELECT `config` FROM `laoji_addons` WHERE ( `name` = 'SystemInfo' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.183011s ]
+SQL: SELECT `config` FROM `laoji_addons` WHERE ( `name` = 'SiteStat' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.199011s ]
+SQL: SELECT `config` FROM `laoji_addons` WHERE ( `name` = 'DevTeam' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.196012s ]
+SQL: SELECT `config` FROM `laoji_addons` WHERE ( `name` = 'EditorForAdmin' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.202011s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:1.560089s ]
+INFO: [ view_parse ] --END-- [ RunTime:1.560089s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.002001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2017-02-16T17:09:09+08:00 ] 127.0.0.1 /Admin/User/index.html
+SQL: SHOW COLUMNS FROM `laoji_menu` [ RunTime:0.238014s ]
+SQL: SELECT * FROM `laoji_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.234013s ]
+SQL: SELECT `id` FROM `laoji_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.235014s ]
+SQL: SHOW COLUMNS FROM `laoji_menu` [ RunTime:0.248014s ]
+SQL: SELECT `id`,`pid`,`title` FROM `laoji_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.234013s ]
+SQL: SELECT DISTINCT  `group` FROM `laoji_menu` WHERE ( pid = 16 )  [ RunTime:0.235014s ]
+SQL: SELECT `id`,`url` FROM `laoji_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.238013s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `laoji_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.231014s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `laoji_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.235013s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `laoji_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.233014s ]
+SQL: SHOW COLUMNS FROM `laoji_member` [ RunTime:0.239013s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `laoji_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.243014s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `laoji_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.213012s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.068004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.068004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-02-16T17:09:14+08:00 ] 127.0.0.1 /Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `laoji_menu` [ RunTime:0.180010s ]
+SQL: SELECT * FROM `laoji_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.177011s ]
+SQL: SELECT `id` FROM `laoji_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.178010s ]
+SQL: SHOW COLUMNS FROM `laoji_menu` [ RunTime:0.183010s ]
+SQL: SELECT `id`,`pid`,`title` FROM `laoji_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.177010s ]
+SQL: SELECT DISTINCT  `group` FROM `laoji_menu` WHERE ( pid = 68 )  [ RunTime:0.176010s ]
+SQL: SELECT `id`,`url` FROM `laoji_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.184010s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `laoji_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.180010s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `laoji_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.176010s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `laoji_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.183010s ]
+SQL: SHOW COLUMNS FROM `laoji_config` [ RunTime:0.194011s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `laoji_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.180010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.028002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-02-16T17:09:31+08:00 ] 127.0.0.1 /Home/Index/Index.html
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: title E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 5 行.
+NOTIC: [8] Undefined variable: category E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 29 行.
+SQL: SHOW COLUMNS FROM `laoji_category` [ RunTime:0.185011s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `laoji_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.186010s ]
+NOTIC: [8] Undefined index: _ E:\wwwroot\btlet.com\Application\Home\Widget\CategoryWidget.class.php 第 25 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.386022s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant TITLE - assumed 'TITLE' E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 41 行.
+NOTIC: [8] Undefined variable: total E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 83 行.
+NOTIC: [8] Undefined variable: friendLink E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 85 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 85 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 88 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 88 行.
+NOTIC: [2] Division by zero E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 88 行.
+NOTIC: [8] Use of undefined constant TITLE - assumed 'TITLE' E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 88 行.
+NOTIC: [8] Use of undefined constant DOMAIN_PATH - assumed 'DOMAIN_PATH' E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 88 行.
+NOTIC: [8] Use of undefined constant STATISTICS - assumed 'STATISTICS' E:\wwwroot\btlet.com\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 90 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

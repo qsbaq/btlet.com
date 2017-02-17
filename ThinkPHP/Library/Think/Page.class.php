@@ -25,7 +25,8 @@ class Page{
 
 	// 分页显示定制
     private $config  = array(
-        'header' => '<span class="rows">共 %TOTAL_ROW% 条记录</span>',
+//        'header' => '<span class="rows">共 %TOTAL_ROW% 条记录</span>',
+        'header' => '<span class="rows">Total : %TOTAL_ROW%</span>',
         'prev'   => '<<',
         'next'   => '>>',
         'first'  => '1...',
