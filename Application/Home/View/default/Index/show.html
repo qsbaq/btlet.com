@@ -8,7 +8,7 @@
         <?php 
             $the_hash = 'magnet:?xt=urn:btih:'.$data['infohash'];
             $the_files = json_decode($data['files'],TRUE);
-            $the_href = str_replace('Index/Show/','',U('Index/Show',array('show'=>$data['infohash'])));
+            $the_href = str_replace(array('Index/Show/','index/show/'),'',U('Index/Show',array('show'=>$data['infohash'])));
         ?>
         <div class="row  custom-panel">
             <div class="col-xs-6 col-md-1"></div>

@@ -18,7 +18,7 @@
 					</tr>
 					<tr>
 						<th>BUG反馈</th>
-						<td><a href="http://www.onethink.cn/cate/bug.html" target="_blank">老季博客</a></td>
+						<td><a href="https://www.jiloc.com/43136.html" target="_blank">老季博客</a></td>
 					</tr>
 				</table>
 			</div>

@@ -13,7 +13,7 @@
                 <?php 
                     $the_hash = 'magnet:?xt=urn:btih:'.$data['infohash'];
                     $the_files = json_decode($data['files'],TRUE);
-                    $the_href = str_replace('Index/search/','',U('',array('show'=>$data['infohash'])));
+                    $the_href = str_replace(array('Index/search/','index/search/'),'',U('',array('show'=>$data['infohash'])));
                 ?>
 
                 <h5><a href="{$the_href}" class="result-title"title="{$data['name']}">{$data['name']}</a></h5>

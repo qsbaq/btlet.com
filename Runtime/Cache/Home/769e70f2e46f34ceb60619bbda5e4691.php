@@ -33,7 +33,7 @@
             <div class="col-xs-6 col-md-6">
                 <div class="middle">
                     <div class="logo">
-                        <a href="<?php echo U('Index/Index');?>" title="<?php echo C('WEB_SITE_TITLE');?>"><img src="/Public/static/assets/img/logo.png" alt="<?php echo TITLE;?>" /></a>
+                        <a href="<?php echo U('/');?>" title="<?php echo C('WEB_SITE_TITLE');?>"><img src="/Public/static/assets/img/logo.png" alt="<?php echo TITLE;?>" /></a>
                     </div>
                     <div class="middle title">
                         <p><?php echo C('WEB_SITE_DESCRIPTION');?></p>
