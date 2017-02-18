@@ -1385,7 +1385,7 @@ CREATE TABLE IF NOT EXISTS `laoji_infohash` (
   `name` varchar(255) NOT NULL,
   `files` text NOT NULL,
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
