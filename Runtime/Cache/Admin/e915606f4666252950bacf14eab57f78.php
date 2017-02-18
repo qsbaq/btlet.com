@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title><?php echo ($meta_title); ?>|OneThink管理平台</title>
+    <title><?php echo ($meta_title); ?>|<?php echo C('WEB_SITE_TITLE');?>管理平台</title>
     <link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/base.css" media="all">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/common.css" media="all">
@@ -21,7 +21,8 @@
     <!-- 头部 -->
     <div class="header">
         <!-- Logo -->
-        <span class="logo"></span>
+        <!--<span class="logo"></span>-->
+        <span style='float: left; margin-left: 16px; width: 184px;height: 49px;'><a href='/'><img src='/Public/static/assets/img/logo.png'></a></span>
         <!-- /Logo -->
 
         <!-- 主导航 -->
@@ -126,7 +127,7 @@
         </div>
         <div class="cont-ft">
             <div class="copyright">
-                <div class="fl">感谢使用<a href="http://www.onethink.cn" target="_blank">OneThink</a>管理平台</div>
+                <div class="fl"><a href="http://laoji.org" target="_blank">老季博客</a> ,基于Onethink管理系统</div>
                 <div class="fr">V<?php echo (ONETHINK_VERSION); ?></div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title><?php echo ($meta_title); ?>|OneThink管理平台</title>
+    <title><?php echo ($meta_title); ?>|<?php echo C('WEB_SITE_TITLE');?>管理平台</title>
     <link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/base.css" media="all">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/common.css" media="all">
@@ -25,7 +25,8 @@
     <!-- 头部 -->
     <div class="header">
         <!-- Logo -->
-        <span class="logo"></span>
+        <!--<span class="logo"></span>-->
+        <span style='float: left; margin-left: 16px; width: 184px;height: 49px;'><a href='/'><img src='/Public/static/assets/img/logo.png'></a></span>
         <!-- /Logo -->
 
         <!-- 主导航 -->
@@ -185,7 +186,7 @@
     })
     $(function(){
         // $('#main').attr({'id': 'indexMain','class': 'index-main'});
-        $('.copyright').html('<div class="copyright"> ©2013 <a href="http://www.topthink.net" target="_blank">topthink.net</a> 上海顶想信息科技有限公司版权所有</div>');
+        $('.copyright').html('<div class="copyright"> ©2013 <a href="http://laoji.org" target="_blank">laoji.org</a> 老季博客 </div> 本产品基于OneThink内容管理系统');
         $('.sidebar').remove();
     })
 </script>

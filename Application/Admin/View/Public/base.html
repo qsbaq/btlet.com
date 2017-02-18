@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{$meta_title}|OneThink管理平台</title>
+    <title>{$meta_title}|{:C('WEB_SITE_TITLE')}管理平台</title>
     <link href="__ROOT__/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <link rel="stylesheet" type="text/css" href="__CSS__/base.css" media="all">
     <link rel="stylesheet" type="text/css" href="__CSS__/common.css" media="all">
@@ -21,7 +21,8 @@
     <!-- 头部 -->
     <div class="header">
         <!-- Logo -->
-        <span class="logo"></span>
+        <!--<span class="logo"></span>-->
+        <span style='float: left; margin-left: 16px; width: 184px;height: 49px;'><a href='/'><img src='__ROOT__/Public/static/assets/img/logo.png'></a></span>
         <!-- /Logo -->
 
         <!-- 主导航 -->
@@ -104,7 +105,7 @@
         </div>
         <div class="cont-ft">
             <div class="copyright">
-                <div class="fl">感谢使用<a href="http://www.onethink.cn" target="_blank">OneThink</a>管理平台</div>
+                <div class="fl">作者：<a href="http://laoji.org" target="_blank">老季</a> ,本产品基于Onethink管理系统</div>
                 <div class="fr">V{$Think.const.ONETHINK_VERSION}</div>
             </div>
         </div>

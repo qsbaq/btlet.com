@@ -8,7 +8,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link href="/Public/static/assets/css/core.css" rel="stylesheet">
-<link rel="shortcut icon" href="/Public/static/assets/img/favicon.ico" />
+<link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+
 <!-- 页面header钩子，一般用于加载插件CSS文件和代码 -->
 <?php echo hook('pageHeader');?>
 
@@ -26,32 +27,29 @@
 
         
         
-        <!-- Search
-        ================================================== -->
-
-
+    <!-- Search
+    ================================================== -->
     <div class="container-fluid content isSearch">
         <!-- 导航条
 ================================================== -->
-
-        <div class="header">
-            <nav>
-                <div class="navbar-header">
-                    <a href="<?php echo U('/');;?>" title="<?php echo C('WEB_SITE_TITLE');?>"><img src="/Public/static/assets/img/logo.png" alt="<?php echo C('WEB_SITE_TITLE');?>" /></a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <div class="navbar-form  search-title">
-                        <input type="text" class="form-control input-md input-search square search-title-input" id="search" placeholder="Movies,actors,or What do you want ?. . .">
-                        <button class="btn btn-md btn-success search-btn square" onclick="onSearch(search,1,'')">Search</button>
-                    </div>
-                </div>
-            </nav>
+<div class="header">
+    <nav>
+        <div class="navbar-header">
+            <a href="<?php echo U('/');;?>" title="<?php echo C('WEB_SITE_TITLE');?>"><img src="/Public/static/assets/img/logo.png" alt="<?php echo C('WEB_SITE_TITLE');?>" /></a>
         </div>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-form  search-title">
+                <input type="text" class="form-control input-md input-search square search-title-input" id="search" placeholder="Movies,actors,or What do you want ?. . .">
+                <button class="btn btn-md btn-success search-btn square" onclick="onSearch(search,1,'')">Search</button>
+            </div>
+        </div>
+    </nav>
+</div>
         <div class="row  custom-panel">
             <div class="col-xs-6 col-md-7">
                 <div id="list-panel">
                     <p id="search-count">Found <?php echo ($_total); ?> items for <?php echo ($the_title); ?></p><br/>
-                <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i; $the_hash = 'magnet:?xt=urn:btih:'.$data['infohash']; $the_files = json_decode($data['files'],TRUE); $the_href = str_replace('Index/search/','',U('',array('show'=>$data['infohash']))); ?>
+                <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i; $the_hash = 'magnet:?xt=urn:btih:'.$data['infohash']; $the_files = json_decode($data['files'],TRUE); $the_href = str_replace(array('Index/search/','index/search/'),'',U('',array('show'=>$data['infohash']))); ?>
 
                 <h5><a href="<?php echo ($the_href); ?>" class="result-title"title="<?php echo ($data['name']); ?>"><?php echo ($data['name']); ?></a></h5>
                     By Time:<span class="listinfo"><?php echo ($data["update_time"]); ?></span>
@@ -64,7 +62,7 @@
                 </div>
                 <nav class="middle">
                     <ul class="pagination result-pagination">
-                        <?php echo str_replace(array('Index/search/','/m/Home'),'',$_page);?>
+                        <?php echo str_replace(array('Index/search/','/m/Home','index/search/'),'',$_page);?>
                     </ul>
                 </nav>
             </div>

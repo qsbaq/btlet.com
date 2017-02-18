@@ -8,7 +8,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link href="/Public/static/assets/css/core.css" rel="stylesheet">
-<link rel="shortcut icon" href="/Public/static/assets/img/favicon.ico" />
+<link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+
 <!-- 页面header钩子，一般用于加载插件CSS文件和代码 -->
 <?php echo hook('pageHeader');?>
 
@@ -33,10 +34,10 @@
             <div class="col-xs-6 col-md-6">
                 <div class="middle">
                     <div class="logo">
-                        <a href="<?php echo U('/');?>" title="<?php echo C('WEB_SITE_TITLE');?>"><img src="/Public/static/assets/img/logo.png" alt="<?php echo TITLE;?>" /></a>
+                        <a href="<?php echo U('/');;?>" title="<?php echo C('WEB_SITE_TITLE');?>"><img src="/Public/static/assets/img/logo.png" alt="<?php echo TITLE;?>" /></a>
                     </div>
                     <div class="middle title">
-                        <p><?php echo C('WEB_SITE_DESCRIPTION');?></p>
+                        <!--<p><?php echo C('WEB_SITE_DESCRIPTION');?></p>-->
                     </div>
                     <div class="index-search">
                         <input type="text" class="form-control input-lg input-search square" id="search" name="q" placeholder="Movies,actors,or What do you want ?. . .">
