@@ -4,9 +4,11 @@ import (
 	"database/sql"
 	"encoding/hex"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -26,7 +28,14 @@ type bitTorrent struct {
 }
 
 func main() {
-	db, err := sql.Open("mysql", "btlet:jjjjjj@tcp(v.laoji.org:3306)/btlet?charset=utf8")
+	sql_type := flag.String("t", "mysql", "DataBase Type")
+	db_user := flag.String("u", "btlet", "DataBase UserName")
+	db_passwd := flag.String("p", "laoji.org", "DataBase Password")
+	db_name := flag.String("d", "btlet", "DataBase Name")
+	db_host := flag.String("h", "localhost", "DataBase Address")
+	db_port := flag.Int("P", 3306, "DataBase Port")
+	flag.Parse()
+	db, err := sql.Open(*sql_type, *db_user+":"+*db_passwd+"@tcp("+*db_host+":"+strconv.Itoa(*db_port)+")/"+*db_name+"?charset=utf8")
 	checkErr(err)
 	defer db.Close()
 
@@ -83,7 +92,7 @@ func main() {
 				}
 			}
 
-			log.Println(bt)
+			log.Println(bt.InfoHash)
 			time.Sleep(1 * time.Second)
 		}
 	}()
