@@ -89,7 +89,7 @@
             <!--/友情链接开始-->
             <!--/友情链接结束-->
 
-            <p class="text-muted">@2017 <a href="<?php echo U('/');;?>"><?php echo C('WEB_SITE_TITLE');?></a></p>
+            <p class="text-muted">@2017 <a href="<?php echo U('/');;?>"><?php echo C('WEB_SITE_TITLE');?></a> E-mail:<?php echo C('EMAIL');;?></p>
             <p><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261276505'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/stat.php%3Fid%3D1261276505%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></p>
         </div>
     </footer>
