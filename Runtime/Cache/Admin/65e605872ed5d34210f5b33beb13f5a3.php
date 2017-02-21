@@ -150,7 +150,7 @@
         </div>
         <div class="cont-ft">
             <div class="copyright">
-                <div class="fl"><a href="http://laoji.org" target="_blank">老季博客</a> ,基于Onethink管理系统</div>
+                <div class="fl">作者：<a href="http://laoji.org" target="_blank">老季</a> ,本产品基于Onethink管理系统</div>
                 <div class="fr">V<?php echo (ONETHINK_VERSION); ?></div>
             </div>
         </div>

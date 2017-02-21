@@ -1,0 +1,99 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>InfoHash列表</h2>
+	</div>
+        
+	<div class="cf">
+        <!--
+            <div class="fl">
+                <button class="btn ajax-post" url="{:U('Infohash/changeStatus',array('method'=>'resumeHash'))}" target-form="ids">启 用</button>
+                <button class="btn ajax-post" url="{:U('Infohash/changeStatus',array('method'=>'forbidHash'))}" target-form="ids">禁 用</button>
+            </div>
+        -->
+        <!-- 高级搜索 -->
+        <!--
+            <div class="search-form fr cf">
+                <div class="sleft">
+                    <input type="text" name="hash" class="search-input" value="{:I('hash')}" placeholder="请输入hash值">
+                    <a class="sch-btn" href="javascript:;" id="search" url="{:U('index')}"><i class="btn-search"></i></a>
+                </div>
+            </div>
+        -->
+    </div>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
+    <thead>
+        <tr>
+		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">ID</th>
+		<th class="">InfoHash</th>
+		<th class="">Name</th>
+		<th class="">Files</th>
+		<th class="">录入时间</th>
+		<!--<th class="">状态</th>-->
+		<!--<th class="">操作</th>-->
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+			<td>{$vo.id} </td>
+                        <td><a href="{:U('/show/'.$vo['infohash'])}" target="_blank">{$vo.infohash}</a></td>
+			<td >{$vo.name}</td>
+                        <td><div  style="max-height:80px;overflow: hidden;">{$vo.files}</div></td>
+			<td>{$vo.update_time}</td>
+			<td>{$vo.status_text}</td>
+			<!--<td><eq name="vo.status" value="1">
+				<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
+				<else/>
+				<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
+				</eq>
+				<a href="{:U('AuthManager/group?uid='.$vo['uid'])}" class="confirm ajax-get">删除</a>
+                </td>-->
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+
+	<script type="text/javascript">
+	//搜索功能
+	$("#search").click(function(){
+        var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	//回车搜索
+	$(".search-input").keyup(function(e){
+		if(e.keyCode === 13){
+			$("#search").click();
+			return false;
+		}
+	});
+    //导航高亮
+    highlight_subnav('{:U('Infohash/index')}');
+	</script>
+</block>

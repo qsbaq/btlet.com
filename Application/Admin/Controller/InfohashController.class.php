@@ -7,7 +7,16 @@ namespace Admin\Controller;
 
 class InfohashController extends AdminController {
     public function index(){
-        $this->success('功能建设中...','http://laoji.org',8);
+        $hash = I("hash");
+        if( $hash ){
+            $map['hash'] = (string)$hash;
+        }
+        
+        $list  = $this->lists('Infohash', $map);
+        int_to_string($list);
+        $this->assign('_list', $list);
+        $this->meta_title = 'InfoHash信息';
+        $this->display();
     }
 
 }
