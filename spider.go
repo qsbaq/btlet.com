@@ -45,7 +45,6 @@ func main() {
 
 	go func() {
 		http.ListenAndServe(":8081", nil)
-		log.Panicln("Begin to Listen Port : 8081 ")
 	}()
 
 	w := dht.NewWire(65536, 1024, 256)
