@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: 2017-02-18 14:15:01
+-- Generation Time: 2017-02-22 10:53:00
 -- 服务器版本： 5.6.34-log
 -- PHP Version: 5.3.29
 
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `laoji_action_log` (
   `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '日志备注',
   `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '状态',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '执行行为的时间'
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 --
 -- 转存表中的数据 `laoji_action_log`
@@ -86,7 +86,15 @@ INSERT INTO `laoji_action_log` (`id`, `action_id`, `user_id`, `action_ip`, `mode
 (12, 1, 1, 987692618, 'member', 1, 'admin在2017-02-18 09:39登录了后台', 1, 1487381967),
 (13, 1, 1, 2130706433, 'member', 1, 'admin在2017-02-18 09:50登录了后台', 1, 1487382614),
 (14, 1, 1, 1778795078, 'member', 1, 'admin在2017-02-18 10:54登录了后台', 1, 1487386471),
-(15, 1, 1, 1870574177, 'member', 1, 'admin在2017-02-18 11:08登录了后台', 1, 1487387280);
+(15, 1, 1, 1870574177, 'member', 1, 'admin在2017-02-18 11:08登录了后台', 1, 1487387280),
+(16, 1, 1, 1879845210, 'member', 1, 'admin在2017-02-19 16:20登录了后台', 1, 1487492401),
+(17, 1, 1, 2130706433, 'member', 1, 'admin在2017-02-21 13:46登录了后台', 1, 1487656013),
+(18, 1, 1, 987681218, 'member', 1, 'admin在2017-02-21 14:49登录了后台', 1, 1487659745),
+(19, 1, 1, 3704110061, 'member', 1, 'admin在2017-02-22 01:01登录了后台', 1, 1487696475),
+(20, 1, 1, 2130706433, 'member', 1, 'admin在2017-02-22 08:19登录了后台', 1, 1487722779),
+(21, 6, 1, 2130706433, 'config', 39, '操作url：/Admin/Config/edit.html', 1, 1487729510),
+(22, 6, 1, 2130706433, 'config', 39, '操作url：/Admin/Config/edit.html', 1, 1487730125),
+(23, 1, 1, 987692618, 'member', 1, 'admin在2017-02-22 10:52登录了后台', 1, 1487731941);
 
 -- --------------------------------------------------------
 
@@ -595,7 +603,7 @@ CREATE TABLE IF NOT EXISTS `laoji_config` (
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态',
   `value` text NOT NULL COMMENT '配置值',
   `sort` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序'
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `laoji_config`
@@ -603,8 +611,8 @@ CREATE TABLE IF NOT EXISTS `laoji_config` (
 
 INSERT INTO `laoji_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `remark`, `create_time`, `update_time`, `status`, `value`, `sort`) VALUES
 (1, 'WEB_SITE_TITLE', 1, '网站标题', 1, '', '网站标题前台显示标题', 1378898976, 1379235274, 1, 'BtLet', 0),
-(2, 'WEB_SITE_DESCRIPTION', 2, '网站描述', 1, '', '网站搜索引擎描述', 1378898976, 1379235841, 1, 'btLet.com 通过网络爬虫机器人从DHT网络和全球各大bt搜索资源分享站爬取磁力链接，故本站不存储任何资源。能检索最热门影视，音乐，软件，电子书等资源，是探究DHT网络的学术产物。被称为p2p种子搜索器，是最懂DHT磁力的搜索引擎。', 1),
-(3, 'WEB_SITE_KEYWORD', 2, '网站关键字', 1, '', '网站搜索引擎关键字', 1378898976, 1381390100, 1, 'BtLet 磁力,BT种子,BT搜索,种子搜索,磁力搜索,磁力链接,磁力链接搜索,磁力链,种子搜索神器,p2p种子搜索器', 8),
+(2, 'WEB_SITE_DESCRIPTION', 2, '网站描述', 1, '', '网站搜索引擎描述', 1378898976, 1379235841, 1, 'btLet.com is a BT search engine based on DHT spider, you can use it as BTDigg.You can search bt torrents and magnetic link.<br/>\r\n\r\nDISCLAIMER: This site just provides BT searching service. It does NOT save any resource from the internet.', 1),
+(3, 'WEB_SITE_KEYWORD', 2, '网站关键字', 1, '', '网站搜索引擎关键字', 1378898976, 1381390100, 1, 'BtLet magnet, p2p, BT Download,BTdigg,Btspread,Btsow,Btava,Bt2mag,Btkitty,torrent,magnet,search', 8),
 (4, 'WEB_SITE_CLOSE', 4, '关闭站点', 1, '0:关闭,1:开启', '站点关闭后其他用户不能访问，管理员可以正常访问', 1378898976, 1379235296, 1, '1', 1),
 (9, 'CONFIG_TYPE_LIST', 3, '配置类型列表', 4, '', '主要用于数据解析和页面表单的生成', 1378898976, 1379235348, 1, '0:数字\r\n1:字符\r\n2:文本\r\n3:数组\r\n4:枚举', 2),
 (10, 'WEB_SITE_ICP', 1, '网站备案号', 1, '', '设置在网站底部显示的备案号，如“沪ICP备12007941号-2', 1378900335, 1379235859, 1, '', 9),
@@ -629,7 +637,9 @@ INSERT INTO `laoji_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `re
 (35, 'REPLY_LIST_ROWS', 0, '回复列表每页条数', 2, '', '', 1386645376, 1387178083, 1, '10', 0),
 (36, 'ADMIN_ALLOW_IP', 2, '后台允许访问IP', 4, '', '多个用逗号分隔，如果不配置表示不限制IP访问', 1387165454, 1387165553, 1, '', 12),
 (37, 'SHOW_PAGE_TRACE', 4, '是否显示页面Trace', 4, '0:关闭\r\n1:开启', '是否显示页面Trace信息', 1387165685, 1387165685, 1, '0', 1),
-(38, 'EMAIL', 1, '邮箱', 3, '', '我们邮箱', 1487398195, 1487398195, 1, 'service.btlet@gmail.com', 0);
+(39, 'RECOMMEND_KEYS', 3, '首页关键词推荐', 3, '', '', 1487729392, 1487730125, 1, '电影,疯狂的麦克斯,行尸走肉', 0),
+(38, 'EMAIL', 1, '邮箱', 3, '', '我们邮箱', 1487398195, 1487398195, 1, 'service.btlet@gmail.com', 0),
+(40, 'KEY_BLACK_LIST', 3, '关键词黑名单', 0, '', '', 1487730295, 1487730295, 1, '习近平,中国,64事件', 0);
 
 -- --------------------------------------------------------
 
@@ -785,7 +795,7 @@ CREATE TABLE IF NOT EXISTS `laoji_member` (
 --
 
 INSERT INTO `laoji_member` (`uid`, `nickname`, `sex`, `birthday`, `qq`, `score`, `login`, `reg_ip`, `reg_time`, `last_login_ip`, `last_login_time`, `status`) VALUES
-(1, 'admin', 0, '0000-00-00', '', 10, 10, 0, 0, 1870574177, 1487387280, 1);
+(1, 'admin', 0, '0000-00-00', '', 30, 16, 0, 0, 987692618, 1487731941, 1);
 
 -- --------------------------------------------------------
 
@@ -1033,7 +1043,7 @@ CREATE TABLE IF NOT EXISTS `laoji_ucenter_member` (
 --
 
 INSERT INTO `laoji_ucenter_member` (`id`, `username`, `password`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`) VALUES
-(1, 'admin', '6f33cf1818c7a07718b165f2f260b21c', '', '', 0, 0, 1487387280, 1870574177, 0, 1);
+(1, 'admin', '6f33cf1818c7a07718b165f2f260b21c', '', '', 0, 0, 1487731941, 987692618, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1279,7 +1289,7 @@ ALTER TABLE `laoji_action`
 -- AUTO_INCREMENT for table `laoji_action_log`
 --
 ALTER TABLE `laoji_action_log`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',AUTO_INCREMENT=16;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `laoji_addons`
 --
@@ -1319,7 +1329,7 @@ ALTER TABLE `laoji_channel`
 -- AUTO_INCREMENT for table `laoji_config`
 --
 ALTER TABLE `laoji_config`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',AUTO_INCREMENT=39;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `laoji_document`
 --
@@ -1381,8 +1391,6 @@ ALTER TABLE `laoji_ucenter_setting`
 ALTER TABLE `laoji_url`
   MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '链接唯一标识';
   
-
-
 --
 -- 表的结构 `laoji_infohash`
 --
@@ -1392,6 +1400,7 @@ CREATE TABLE IF NOT EXISTS `laoji_infohash` (
   `infohash` varchar(64) NOT NULL,
   `name` varchar(255) NOT NULL,
   `files` text NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '1',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
@@ -1414,4 +1423,4 @@ ALTER TABLE `laoji_infohash`
 -- AUTO_INCREMENT for table `laoji_infohash`
 --
 ALTER TABLE `laoji_infohash`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;  
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

@@ -17,14 +17,21 @@ class IndexController extends HomeController {
 
     //系统首页
     public function index(){
+        $recKeys = C('RECOMMEND_KEYS');
+        $this->assign('reckeys',$recKeys);
         $this->display();
     }
     
     // 搜索列表
     public function search(){
-        $MShipInfo = M('infohash');
         $s = I("s");
-        $lists = $this->lists($MShipInfo,array('name|files' => array('like','%'.$s.'%')),'id DESC');
+        $black_list = C('KEY_BLACK_LIST');
+        if( in_array($s,$black_list) ){
+            $this->error('Blacklist','/',3);
+            return ;
+        }
+        $MShipInfo = M('infohash');
+        $lists = $this->lists($MShipInfo,array('name|files' => array('like','%'.$s.'%'),'status'=>1),'id DESC');
         $this->assign('the_title',$s);
     	$this->assign('list',$lists);
     	$this->display();
@@ -34,6 +41,7 @@ class IndexController extends HomeController {
     public function show(){
         $data = M('infohash')->where(array(
             'infohash'  =>  I('hash'),
+            'status'    => 1
         ))->find();
         //print_r($data);
         $this->assign('the_title',$data['name']);

@@ -7,12 +7,10 @@
 	</div>
         
 	<div class="cf">
-        <!--
             <div class="fl">
-                <button class="btn ajax-post" url="{:U('Infohash/changeStatus',array('method'=>'resumeHash'))}" target-form="ids">启 用</button>
-                <button class="btn ajax-post" url="{:U('Infohash/changeStatus',array('method'=>'forbidHash'))}" target-form="ids">禁 用</button>
+                <button class="btn ajax-post" url="{:U('Infohash/changeStatus',array('method'=>'resumehash'))}" target-form="ids">启 用</button>
+                <button class="btn ajax-post" url="{:U('Infohash/changeStatus',array('method'=>'forbidhash'))}" target-form="ids">禁 用</button>
             </div>
-        -->
         <!-- 高级搜索 -->
         <!--
             <div class="search-form fr cf">
@@ -34,28 +32,27 @@
 		<th class="">Name</th>
 		<th class="">Files</th>
 		<th class="">录入时间</th>
-		<!--<th class="">状态</th>-->
-		<!--<th class="">操作</th>-->
+		<th class="">状态</th>
+		<th class="">操作</th>
 		</tr>
     </thead>
     <tbody>
 		<notempty name="_list">
 		<volist name="_list" id="vo">
 		<tr>
-            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+                        <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
 			<td>{$vo.id} </td>
                         <td><a href="{:U('/show/'.$vo['infohash'])}" target="_blank">{$vo.infohash}</a></td>
 			<td >{$vo.name}</td>
                         <td><div  style="max-height:80px;overflow: hidden;">{$vo.files}</div></td>
 			<td>{$vo.update_time}</td>
 			<td>{$vo.status_text}</td>
-			<!--<td><eq name="vo.status" value="1">
-				<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
-				<else/>
-				<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
-				</eq>
-				<a href="{:U('AuthManager/group?uid='.$vo['uid'])}" class="confirm ajax-get">删除</a>
-                </td>-->
+			<td><eq name="vo.status" value="1">
+				<a href="{:U('Infohash/changeStatus?method=forbidhash&id='.$vo['id'])}" class="ajax-get">禁用</a>
+                            <else/>
+				<a href="{:U('Infohash/changeStatus?method=resumehash&id='.$vo['id'])}" class="ajax-get">启用</a>
+                            </eq>
+                        </td>
 		</tr>
 		</volist>
 		<else/>
@@ -68,11 +65,12 @@
         {$_page}
     </div>
 </block>
-
 <block name="script">
 	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
 
 	<script type="text/javascript">
+        $('.sidebar').css('display','none');
+        $('body').css('padding-left','0');
 	//搜索功能
 	$("#search").click(function(){
         var url = $(this).attr('url');
@@ -93,7 +91,7 @@
 			return false;
 		}
 	});
-    //导航高亮
-    highlight_subnav('{:U('Infohash/index')}');
+        //导航高亮
+        highlight_subnav('{:U('Infohash/index')}');
 	</script>
 </block>

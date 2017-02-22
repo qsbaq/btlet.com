@@ -19,7 +19,9 @@
                     </div>
 
                     <div class="recommend" id="recommend-list">
-
+                        <volist name="reckeys" id="data">
+                        <a href="{:U('s/'.$data);}" title='{$data}'><span>{$data}</span></a>
+                        </volist>
                     </div>
                 </div>
                 <div class="middle search">
