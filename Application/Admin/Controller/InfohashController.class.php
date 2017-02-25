@@ -10,7 +10,7 @@ class InfohashController extends AdminController {
         $hash = I("hash");
         $map = array();
         if( $hash ){
-            $map['hash'] = (string)$hash;
+            $map['infohash'] = (string)$hash;
         }
         
         $list  = $this->lists('Infohash', $map);
