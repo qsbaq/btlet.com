@@ -1424,3 +1424,37 @@ ALTER TABLE `laoji_infohash`
 --
 ALTER TABLE `laoji_infohash`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  
+  
+  
+--
+-- 表的结构 `laoji_statistics`
+--
+
+CREATE TABLE IF NOT EXISTS `laoji_statistics` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `number` int(11) NOT NULL,
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `laoji_statistics`
+--
+ALTER TABLE `laoji_statistics`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `date` (`date`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `laoji_statistics`
+--
+ALTER TABLE `laoji_statistics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

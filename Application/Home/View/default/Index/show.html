@@ -21,7 +21,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Magnet Link</div>
                             <div class="panel-body">
-                                <a href="{$the_hash}" id="magnet" title="{$the_title}">{$data['name']}</a>
+                                <a href="{$the_hash}" id="magnet" title="{$the_title}">{$the_hash}</a>
                                 </br>
                                 </br>
                                 <button class="btn btn-success btn-md infohash-button square" data-clipboard-text="{$the_hash}" data-placement="bottom" id="btnCopy" title="Copy Magnet">
@@ -30,7 +30,7 @@
                                 <a href="{$the_hash}" title="{$the_title} Download" type="button" class="btn btn-md btn-success infohash-button square" id="download">Download</a>
                             </div>
                         </div>
-
+                        <p>Time:<span class="listinfo">{$data["update_time"]}</span></p>
                         <div class="panel panel-default">
                             <div class="panel-heading">File List:</div>
                             <div  class='file_list'>

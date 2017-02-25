@@ -13,10 +13,16 @@
     <div id="indexMain" class="index-main">
        <!-- 插件块 -->
        <div class="container-span">{:hook('AdminIndex')}</div>
+       <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+       <div style="text-align: center;margin: 0 auto;">共计：{$all}</div>
+       
+       
     </div>
+
 </block>
 
 <block name="script">
+<script src="https://img.hcharts.cn/highcharts/highcharts.js"    ></script>
 <script type="text/javascript">
     /* 插件块关闭操作 */
     $(".title-opt .wm-slide").each(function(){
@@ -25,7 +31,40 @@
             $(this).find("i").toggleClass("mod-up");
         });
     })
-    $(function(){
+    $(function(){ 
+        $('#container').highcharts({
+            title: {
+                text: '<a href="http://www.btlet.com/?source=highcharts" target="_blank">btlet.com</a>',
+                x: -20 //center
+            },
+            credits: { 
+            enabled: false //去掉highcharts网站url 
+            },
+            xAxis: {categories: <?php echo json_encode($date);?> },
+            yAxis: {
+            title: {
+            text: ''
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'BtLet 爬虫',
+                data: [<?php echo rtrim($rows,',');?>]
+            }]
+        });
         // $('#main').attr({'id': 'indexMain','class': 'index-main'});
         $('.copyright').html('<div class="copyright"> ©2013 <a href="http://laoji.org" target="_blank">laoji.org</a> 老季博客 </div> 本产品基于OneThink内容管理系统');
         $('.sidebar').remove();
