@@ -30,12 +30,42 @@ class IndexController extends HomeController {
             $this->error('Blacklist','/',3);
             return ;
         }
-        $MShipInfo = M('infohash');
-        $lists = $this->lists($MShipInfo,array('name|files' => array('like','%'.$s.'%'),'status'=>1),'id DESC');
+        
+        if( C('USE_SPHINX') ){
+            $nowPage = I('p');//当前页
+            import('ORG.Util.Page');
+            $listRows = C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
+            $nowPage = $nowPage>1 ? $nowPage : 1;
+            $off=($nowPage-1)*$PageSize;
+
+            $sphinx = new \SphinxClient;
+            $sphinx->setServer("localhost", 9312);
+            $sphinx->setMatchMode(SPH_MATCH_ANY);   //匹配模式 ANY为关键词自动拆词，ALL为不拆词匹配（完全匹配）
+            $sphinx->SetFilterString('status',array(1));
+            $sphinx->SetSortMode(SPH_SORT_EXTENDED,"@weight desc, update_time desc, id desc");
+            $sphinx->SetArrayResult ( true );	//返回的结果集为数组
+            $sphinx->SetLimits($off,$listRows);//传递当前页面所需的数据条数的参数
+            $result = $sphinx->query( $s ,"*");	//星号为所有索引源
+
+            $total=$result['total'];		//查到的结果条数
+            $time=$result['time'];		//耗时
+            $lists=$result['matches'];		//结果集
+            $sphinx->close();
+            $page = new \Think\Page($total, $listRows);
+            $p = $page->show();
+            $this->assign('_page', $p? $p: '');
+            $this->assign('_total',$total);
+            $this->assign('_time',$time);
+      
+        }else{
+            $MShipInfo = M('infohash');
+            $lists = $this->lists($MShipInfo,array('name|files' => array('like','%'.$s.'%'),'status'=>1),'id DESC');
+        }
         $this->assign('the_title',$s);
-    	$this->assign('list',$lists);
+        $this->assign('list',$lists);
     	$this->display();
     }
+
     
     //  详情页
     public function show(){

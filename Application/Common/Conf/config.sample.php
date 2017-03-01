@@ -46,6 +46,9 @@ return array(
     'DB_PORT'   => '3306', // 端口
     'DB_CHARSET' => 'utf8mb4',
     'DB_PREFIX' => 'laoji_', // 数据库表前缀
+    
+    //是否启用sphin搜索
+    'USE_SPHINX'    => false,
 
     /* 文档模型配置 (文档模型核心配置，请勿更改) */
     'DOCUMENT_MODEL_TYPE' => array(2 => '主题', 1 => '目录', 3 => '段落'),
