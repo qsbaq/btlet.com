@@ -13,13 +13,13 @@
                     <p>Processed in {$_time} second(s)</p><br/>
                 <volist name="list" id="data">
                 <?php 
-                    $the_hash = 'magnet:?xt=urn:btih:'.$data['attrs']['infohash'];
-                    $the_files = json_decode($data['attrs']['files'],TRUE);
-                    $the_href = str_replace(array('Index/search/','index/search/'),'',U('',array('show'=>$data['attrs']['infohash'])));
+                    $the_hash = 'magnet:?xt=urn:btih:'.$data['infohash'];
+                    $the_files = json_decode($data['files'],TRUE);
+                    $the_href = str_replace(array('Index/search/','index/search/'),'',U('',array('show'=>$data['infohash'])));
                 ?>
 
-                <h5><a href="{$the_href}" class="result-title"title="{$data['attrs']['name']}">{$data['attrs']['name']}</a></h5>
-                    Time:<span class="listinfo">{$data['attrs']["update_time"]|date='Y-m-d H:i:s',###}</span>
+                <h5><a href="{$the_href}" class="result-title"title="{$data['name']}">{$data['name']}</a></h5>
+                    Time:<span class="listinfo">{$data["update_time"]}</span>
                         <div  class='file_list'>
                             <ul id="file-list" class='file_list'>
                                 <volist name='the_files' id='files'>

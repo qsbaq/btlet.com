@@ -32,24 +32,32 @@ class IndexController extends HomeController {
         }
         
         if( C('USE_SPHINX') ){
+            import('Vendor.Sphinxapi');
             $nowPage = I('p');//当前页
             import('ORG.Util.Page');
             $listRows = C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
             $nowPage = $nowPage>1 ? $nowPage : 1;
             $off=($nowPage-1)*$PageSize;
 
-            $sphinx = new \SphinxClient;
+            $sphinx = new \SphinxClient();
             $sphinx->setServer("localhost", 9312);
-            $sphinx->setMatchMode(SPH_MATCH_ANY);   //匹配模式 ANY为关键词自动拆词，ALL为不拆词匹配（完全匹配）
-            $sphinx->SetFilterString('status',array(1));
-            $sphinx->SetSortMode(SPH_SORT_EXTENDED,"@weight desc, update_time desc, id desc");
+            $sphinx->setMatchMode(SPH_MATCH_EXTENDED);   //匹配模式 ANY为关键词自动拆词，ALL为不拆词匹配（完全匹配）
+            $sphinx->SetFilter ('status',1);
+            $sphinx->SetSortMode ( SPH_SORT_ATTR_DESC, "update_time" );
             $sphinx->SetArrayResult ( true );	//返回的结果集为数组
             $sphinx->SetLimits($off,$listRows);//传递当前页面所需的数据条数的参数
             $result = $sphinx->query( $s ,"*");	//星号为所有索引源
-
             $total=$result['total'];		//查到的结果条数
             $time=$result['time'];		//耗时
             $lists=$result['matches'];		//结果集
+            //var_dump($result);
+            foreach($result['matches'] as $id => $ret){
+		$ids .= $ret["id"].",";
+            }
+            $ids = rtrim($ids,',');
+            $where =array();
+            $where['id'] = array('in',$ids);
+            $lists = M('infohash')->where($where)->order("update_time desc")->select();
             $sphinx->close();
             $page = new \Think\Page($total, $listRows);
             $p = $page->show();
