@@ -1,7 +1,6 @@
 <extend name="Base/common"/>
 
 <block name="body">
-<?php if( C('USE_SPHINX')){ ?>
     <!-- Search
     ================================================== -->
     <div class="container-fluid content isSearch">
@@ -9,8 +8,7 @@
         <div class="row  custom-panel">
             <div class="col-xs-6 col-md-7">
                 <div id="list-panel">
-                    <p id="search-count">Found {$_total} items for {$the_title}.  </p>
-                    <p>Processed in {$_time} second(s)</p><br/>
+                    <p id="search-count">Found {$_total} items for {$the_title}.  <?php if( C('USE_SPHINX')){ ?>Processed in {$_time} second(s) <?php }?></p><br/>
                 <volist name="list" id="data">
                 <?php 
                     $the_hash = 'magnet:?xt=urn:btih:'.$data['infohash'];
@@ -38,41 +36,4 @@
             </div>
         </div>
     </div>
-<?php }else{ ?>
-    <!-- Search
-    ================================================== -->
-    <div class="container-fluid content isSearch">
-        <include file='Public/header'/>
-        <div class="row  custom-panel">
-            <div class="col-xs-6 col-md-7">
-                <div id="list-panel">
-                    <p id="search-count">Found {$_total} items for {$the_title}</p><br/>
-                <volist name="list" id="data">
-                <?php 
-                    $the_hash = 'magnet:?xt=urn:btih:'.$data['infohash'];
-                    $the_files = json_decode($data['files'],TRUE);
-                    $the_href = str_replace(array('Index/search/','index/search/'),'',U('',array('show'=>$data['infohash'])));
-                ?>
-
-                <h5><a href="{$the_href}" class="result-title"title="{$data['name']}">{$data['name']}</a></h5>
-                    Time:<span class="listinfo">{$data["update_time"]}</span>
-                        <div  class='file_list'>
-                            <ul id="file-list" class='file_list'>
-                                <volist name='the_files' id='files'>
-                                <li>{$files['path'][0]} {$files['path'][1]} ({$files['length']})</li>
-                                </volist>
-                            </ul>
-                        </div>
-                    <p></p><br>
-                </volist>
-                </div>
-                <nav class="middle">
-                    <ul class="pagination result-pagination">
-                        <?php echo str_replace(array('Index/search/','/m/Home','index/search/'),'',$_page);?>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-<?php } ?>        
 </block>        
