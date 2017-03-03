@@ -52,24 +52,25 @@ func main() {
 
 	if rows.Next() {
 		rows.Scan(&number)
+		update_time := time.Now().Format("2006-01-02 15:04:05")
 		if status == "INSERT" {
-			stmtIns, err := db.Prepare("INSERT INTO laoji_statistics(date,number) VALUES( ?, ? )")
+			stmtIns, err := db.Prepare("INSERT INTO laoji_statistics(date,number,update_time) VALUES( ?, ? ,?)")
 			if err != nil {
 				checkErr(err)
 			}
 			defer stmtIns.Close()
-			_, err = stmtIns.Exec(*yDate, number)
+			_, err = stmtIns.Exec(*yDate, number, update_time)
 			if err != nil {
 				checkErr(err)
 			}
 			fmt.Printf("INSERT %s -> %s\n", *yDate, number)
 		} else if status == "UPDATE" {
-			stmtUpd, err := db.Prepare("UPDATE laoji_statistics SET number = ? WHERE date= ? ")
+			stmtUpd, err := db.Prepare("UPDATE laoji_statistics SET number = ?,update_time=? WHERE date= ? ")
 			if err != nil {
 				checkErr(err)
 			}
 			defer stmtUpd.Close()
-			_, err = stmtUpd.Exec(number, *yDate)
+			_, err = stmtUpd.Exec(number, update_time, *yDate)
 			if err != nil {
 				checkErr(err)
 			}

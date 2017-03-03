@@ -25,7 +25,6 @@
     <thead>
         <tr>
 		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
-		<th class="">ID</th>
 		<th class="">InfoHash</th>
 		<th class="">Name</th>
 		<th class="">Files</th>
@@ -39,7 +38,6 @@
 		<volist name="_list" id="vo">
 		<tr>
                         <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
-			<td>{$vo.id} </td>
                         <td><a href="{:U('/show/'.$vo['infohash'])}" target="_blank">{$vo.infohash}</a></td>
 			<td >{$vo.name}</td>
                         <td><div  style="max-height:80px;overflow: hidden;">{$vo.files}</div></td>

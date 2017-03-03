@@ -8,7 +8,7 @@
         <div class="row  custom-panel">
             <div class="col-xs-6 col-md-7">
                 <div id="list-panel">
-                    <p id="search-count">Found {$_total} items for {$the_title}.  <?php if( C('USE_SPHINX')){ ?>Processed in {$_time} second(s) <?php }?></p><br/>
+                    <p id="search-count">About {$_total} results.<?php if( C('USE_SPHINX')){ ?>({$_time} seconds) <?php }?></p><br/>
                 <volist name="list" id="data">
                 <?php 
                     $the_hash = 'magnet:?xt=urn:btih:'.$data['infohash'];

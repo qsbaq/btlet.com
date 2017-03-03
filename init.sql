@@ -1,17 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.7
+-- version 3.5.8.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: 2017-02-22 10:53:00
--- 服务器版本： 5.6.34-log
--- PHP Version: 5.3.29
+-- 主机: localhost:3306
+-- 生成日期: 2017 年 03 月 03 日 15:21
+-- 服务器版本: 5.1.73
+-- PHP 版本: 5.3.21
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `btlet`
+-- 数据库: `btlet`
 --
 
 -- --------------------------------------------------------
@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_action` (
-  `id` int(11) unsigned NOT NULL COMMENT '主键',
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `name` char(30) NOT NULL DEFAULT '' COMMENT '行为唯一标识',
   `title` char(80) NOT NULL DEFAULT '' COMMENT '行为说明',
   `remark` char(140) NOT NULL DEFAULT '' COMMENT '行为描述',
@@ -29,8 +29,9 @@ CREATE TABLE IF NOT EXISTS `laoji_action` (
   `log` text NOT NULL COMMENT '日志规则',
   `type` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '类型',
   `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
-  `update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间'
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
+  `update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表' AUTO_INCREMENT=12 ;
 
 --
 -- 转存表中的数据 `laoji_action`
@@ -56,7 +57,7 @@ INSERT INTO `laoji_action` (`id`, `name`, `title`, `remark`, `rule`, `log`, `typ
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_action_log` (
-  `id` int(10) unsigned NOT NULL COMMENT '主键',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `action_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '行为id',
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '执行用户id',
   `action_ip` bigint(20) NOT NULL COMMENT '执行行为者ip',
@@ -64,8 +65,12 @@ CREATE TABLE IF NOT EXISTS `laoji_action_log` (
   `record_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '触发行为的数据id',
   `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '日志备注',
   `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '状态',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '执行行为的时间'
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '执行行为的时间',
+  PRIMARY KEY (`id`),
+  KEY `action_ip_ix` (`action_ip`),
+  KEY `action_id_ix` (`action_id`),
+  KEY `user_id_ix` (`user_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表' AUTO_INCREMENT=59 ;
 
 --
 -- 转存表中的数据 `laoji_action_log`
@@ -94,7 +99,42 @@ INSERT INTO `laoji_action_log` (`id`, `action_id`, `user_id`, `action_ip`, `mode
 (20, 1, 1, 2130706433, 'member', 1, 'admin在2017-02-22 08:19登录了后台', 1, 1487722779),
 (21, 6, 1, 2130706433, 'config', 39, '操作url：/Admin/Config/edit.html', 1, 1487729510),
 (22, 6, 1, 2130706433, 'config', 39, '操作url：/Admin/Config/edit.html', 1, 1487730125),
-(23, 1, 1, 987692618, 'member', 1, 'admin在2017-02-22 10:52登录了后台', 1, 1487731941);
+(23, 1, 1, 987692618, 'member', 1, 'admin在2017-02-22 10:52登录了后台', 1, 1487731941),
+(24, 6, 1, 987692618, 'config', 39, '操作url：/admin/config/edit.html', 1, 1487743459),
+(25, 6, 1, 987692618, 'config', 40, '操作url：/admin/config/edit.html', 1, 1487743489),
+(26, 6, 1, 987692618, 'config', 39, '操作url：/admin/config/edit.html', 1, 1487743541),
+(27, 1, 1, 987692618, 'member', 1, 'admin在2017-02-23 08:35登录了后台', 1, 1487810124),
+(28, 1, 1, 987692618, 'member', 1, 'admin在2017-02-24 13:09登录了后台', 1, 1487912997),
+(29, 6, 1, 987692618, 'config', 39, '操作url：/admin/config/edit.html', 1, 1487925244),
+(30, 1, 1, 987677924, 'member', 1, 'admin在2017-02-24 18:46登录了后台', 1, 1487933204),
+(31, 1, 1, 1884520932, 'member', 1, 'admin在2017-02-25 08:22登录了后台', 1, 1487982135),
+(32, 1, 1, 2130706433, 'member', 1, 'admin在2017-02-25 10:37登录了后台', 1, 1487990224),
+(33, 1, 1, 826783988, 'member', 1, 'admin在2017-02-25 11:28登录了后台', 1, 1487993303),
+(34, 1, 1, 1884520932, 'member', 1, 'admin在2017-02-25 13:48登录了后台', 1, 1488001728),
+(35, 6, 1, 1884520932, 'config', 39, '操作url：/admin/config/edit.html', 1, 1488002065),
+(36, 1, 1, 987692618, 'member', 1, 'admin在2017-02-25 15:15登录了后台', 1, 1488006938),
+(37, 1, 1, 2569193315, 'member', 1, 'admin在2017-02-26 11:40登录了后台', 1, 1488080412),
+(38, 1, 1, 1971864709, 'member', 1, 'admin在2017-02-26 16:34登录了后台', 1, 1488098073),
+(39, 1, 1, 1971858874, 'member', 1, 'admin在2017-02-26 20:29登录了后台', 1, 1488112152),
+(40, 1, 1, 1884520932, 'member', 1, 'admin在2017-02-27 08:27登录了后台', 1, 1488155234),
+(41, 1, 1, 826784142, 'member', 1, 'admin在2017-02-27 11:55登录了后台', 1, 1488167709),
+(42, 1, 1, 826784193, 'member', 1, 'admin在2017-02-28 07:18登录了后台', 1, 1488237529),
+(43, 1, 1, 987692618, 'member', 1, 'admin在2017-02-28 08:37登录了后台', 1, 1488242228),
+(44, 1, 1, 987692618, 'member', 1, 'admin在2017-02-28 10:07登录了后台', 1, 1488247623),
+(45, 1, 1, 1971858870, 'member', 1, 'admin在2017-02-28 17:20登录了后台', 1, 1488273625),
+(46, 1, 1, 826784274, 'member', 1, 'admin在2017-02-28 21:43登录了后台', 1, 1488289432),
+(47, 1, 1, 987692618, 'member', 1, 'admin在2017-03-01 08:20登录了后台', 1, 1488327627),
+(48, 1, 1, 987692618, 'member', 1, 'admin在2017-03-01 09:51登录了后台', 1, 1488333097),
+(49, 1, 1, 987692618, 'member', 1, 'admin在2017-03-01 14:22登录了后台', 1, 1488349337),
+(50, 6, 1, 987692618, 'config', 39, '操作url：/admin/config/edit.html', 1, 1488355061),
+(51, 1, 1, 1884521019, 'member', 1, 'admin在2017-03-02 08:21登录了后台', 1, 1488414107),
+(52, 1, 1, 1971858874, 'member', 1, 'admin在2017-03-02 20:01登录了后台', 1, 1488456095),
+(53, 1, 1, 1884521019, 'member', 1, 'admin在2017-03-03 09:40登录了后台', 1, 1488505216),
+(54, 6, 1, 987692618, 'config', 40, '操作url：/admin/config/edit.html', 1, 1488507030),
+(55, 6, 1, 987692618, 'config', 38, '操作url：/admin/config/edit.html', 1, 1488507044),
+(56, 6, 1, 987692618, 'config', 39, '操作url：/admin/config/edit.html', 1, 1488507060),
+(57, 6, 1, 987692618, 'config', 41, '操作url：/admin/config/edit.html', 1, 1488507615),
+(58, 6, 1, 1884521019, 'config', 42, '操作url：/admin/config/edit.html', 1, 1488517846);
 
 -- --------------------------------------------------------
 
@@ -103,7 +143,7 @@ INSERT INTO `laoji_action_log` (`id`, `action_id`, `user_id`, `action_ip`, `mode
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_addons` (
-  `id` int(10) unsigned NOT NULL COMMENT '主键',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `name` varchar(40) NOT NULL COMMENT '插件名或标识',
   `title` varchar(20) NOT NULL DEFAULT '' COMMENT '中文名',
   `description` text COMMENT '插件描述',
@@ -112,8 +152,9 @@ CREATE TABLE IF NOT EXISTS `laoji_addons` (
   `author` varchar(40) DEFAULT '' COMMENT '作者',
   `version` varchar(20) DEFAULT '' COMMENT '版本号',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '安装时间',
-  `has_adminlist` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否有后台列表'
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='插件表';
+  `has_adminlist` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否有后台列表',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='插件表' AUTO_INCREMENT=16 ;
 
 --
 -- 转存表中的数据 `laoji_addons`
@@ -135,7 +176,7 @@ INSERT INTO `laoji_addons` (`id`, `name`, `title`, `description`, `status`, `con
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_attachment` (
-  `id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
   `title` char(30) NOT NULL DEFAULT '' COMMENT '附件显示名',
   `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '附件类型',
@@ -147,8 +188,10 @@ CREATE TABLE IF NOT EXISTS `laoji_attachment` (
   `sort` int(8) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='附件表';
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态',
+  PRIMARY KEY (`id`),
+  KEY `idx_record_status` (`record_id`,`status`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='附件表' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -157,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `laoji_attachment` (
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_attribute` (
-  `id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL DEFAULT '' COMMENT '字段名',
   `title` varchar(100) NOT NULL DEFAULT '' COMMENT '字段注释',
   `field` varchar(100) NOT NULL DEFAULT '' COMMENT '字段定义',
@@ -177,8 +220,10 @@ CREATE TABLE IF NOT EXISTS `laoji_attribute` (
   `validate_type` varchar(25) NOT NULL,
   `auto_rule` varchar(100) NOT NULL,
   `auto_time` tinyint(1) unsigned NOT NULL,
-  `auto_type` varchar(25) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='模型属性表';
+  `auto_type` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `model_id` (`model_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='模型属性表' AUTO_INCREMENT=33 ;
 
 --
 -- 转存表中的数据 `laoji_attribute`
@@ -227,7 +272,10 @@ INSERT INTO `laoji_attribute` (`id`, `name`, `title`, `field`, `type`, `value`, 
 CREATE TABLE IF NOT EXISTS `laoji_auth_extend` (
   `group_id` mediumint(10) unsigned NOT NULL COMMENT '用户id',
   `extend_id` mediumint(8) unsigned NOT NULL COMMENT '扩展表中数据的id',
-  `type` tinyint(1) unsigned NOT NULL COMMENT '扩展类型标识 1:栏目分类权限;2:模型权限'
+  `type` tinyint(1) unsigned NOT NULL COMMENT '扩展类型标识 1:栏目分类权限;2:模型权限',
+  UNIQUE KEY `group_extend_type` (`group_id`,`extend_id`,`type`),
+  KEY `uid` (`group_id`),
+  KEY `group_id` (`extend_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户组与分类的对应关系表';
 
 --
@@ -251,14 +299,15 @@ INSERT INTO `laoji_auth_extend` (`group_id`, `extend_id`, `type`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_auth_group` (
-  `id` mediumint(8) unsigned NOT NULL COMMENT '用户组id,自增主键',
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户组id,自增主键',
   `module` varchar(20) NOT NULL COMMENT '用户组所属模块',
   `type` tinyint(4) NOT NULL COMMENT '组类型',
   `title` char(20) NOT NULL DEFAULT '' COMMENT '用户组中文名称',
   `description` varchar(80) NOT NULL DEFAULT '' COMMENT '描述信息',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '用户组状态：为1正常，为0禁用,-1为删除',
-  `rules` varchar(500) NOT NULL DEFAULT '' COMMENT '用户组拥有的规则id，多个规则 , 隔开'
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `rules` varchar(500) NOT NULL DEFAULT '' COMMENT '用户组拥有的规则id，多个规则 , 隔开',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `laoji_auth_group`
@@ -276,7 +325,10 @@ INSERT INTO `laoji_auth_group` (`id`, `module`, `type`, `title`, `description`, 
 
 CREATE TABLE IF NOT EXISTS `laoji_auth_group_access` (
   `uid` int(10) unsigned NOT NULL COMMENT '用户id',
-  `group_id` mediumint(8) unsigned NOT NULL COMMENT '用户组id'
+  `group_id` mediumint(8) unsigned NOT NULL COMMENT '用户组id',
+  UNIQUE KEY `uid_group_id` (`uid`,`group_id`),
+  KEY `uid` (`uid`),
+  KEY `group_id` (`group_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -286,14 +338,16 @@ CREATE TABLE IF NOT EXISTS `laoji_auth_group_access` (
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_auth_rule` (
-  `id` mediumint(8) unsigned NOT NULL COMMENT '规则id,自增主键',
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '规则id,自增主键',
   `module` varchar(20) NOT NULL COMMENT '规则所属module',
   `type` tinyint(2) NOT NULL DEFAULT '1' COMMENT '1-url;2-主菜单',
   `name` char(80) NOT NULL DEFAULT '' COMMENT '规则唯一英文标识',
   `title` char(20) NOT NULL DEFAULT '' COMMENT '规则中文描述',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效(0:无效,1:有效)',
-  `condition` varchar(300) NOT NULL DEFAULT '' COMMENT '规则附加条件'
-) ENGINE=MyISAM AUTO_INCREMENT=217 DEFAULT CHARSET=utf8;
+  `condition` varchar(300) NOT NULL DEFAULT '' COMMENT '规则附加条件',
+  PRIMARY KEY (`id`),
+  KEY `module` (`module`,`status`,`type`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=217 ;
 
 --
 -- 转存表中的数据 `laoji_auth_rule`
@@ -521,7 +575,7 @@ INSERT INTO `laoji_auth_rule` (`id`, `module`, `type`, `name`, `title`, `status`
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_category` (
-  `id` int(10) unsigned NOT NULL COMMENT '分类ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类ID',
   `name` varchar(30) NOT NULL COMMENT '标志',
   `title` varchar(50) NOT NULL COMMENT '标题',
   `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID',
@@ -546,8 +600,11 @@ CREATE TABLE IF NOT EXISTS `laoji_category` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '数据状态',
-  `icon` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分类图标'
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='分类表';
+  `icon` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分类图标',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_name` (`name`),
+  KEY `pid` (`pid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='分类表' AUTO_INCREMENT=39 ;
 
 --
 -- 转存表中的数据 `laoji_category`
@@ -564,7 +621,7 @@ INSERT INTO `laoji_category` (`id`, `name`, `title`, `pid`, `sort`, `list_row`, 
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_channel` (
-  `id` int(10) unsigned NOT NULL COMMENT '频道ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '频道ID',
   `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级频道ID',
   `title` char(30) NOT NULL COMMENT '频道标题',
   `url` char(100) NOT NULL COMMENT '频道连接',
@@ -572,8 +629,10 @@ CREATE TABLE IF NOT EXISTS `laoji_channel` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态',
-  `target` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '新窗口打开'
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `target` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '新窗口打开',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- 转存表中的数据 `laoji_channel`
@@ -591,7 +650,7 @@ INSERT INTO `laoji_channel` (`id`, `pid`, `title`, `url`, `sort`, `create_time`,
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_config` (
-  `id` int(10) unsigned NOT NULL COMMENT '配置ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',
   `name` varchar(30) NOT NULL DEFAULT '' COMMENT '配置名称',
   `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '配置类型',
   `title` varchar(50) NOT NULL DEFAULT '' COMMENT '配置说明',
@@ -602,8 +661,12 @@ CREATE TABLE IF NOT EXISTS `laoji_config` (
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态',
   `value` text NOT NULL COMMENT '配置值',
-  `sort` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序'
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+  `sort` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_name` (`name`),
+  KEY `type` (`type`),
+  KEY `group` (`group`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
 
 --
 -- 转存表中的数据 `laoji_config`
@@ -624,7 +687,7 @@ INSERT INTO `laoji_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `re
 (22, 'AUTH_CONFIG', 3, 'Auth配置', 4, '', '自定义Auth.class.php类配置', 1379409310, 1379409564, 1, 'AUTH_ON:1\r\nAUTH_TYPE:2', 8),
 (23, 'OPEN_DRAFTBOX', 4, '是否开启草稿功能', 2, '0:关闭草稿功能\r\n1:开启草稿功能\r\n', '新增文章时的草稿功能配置', 1379484332, 1379484591, 1, '1', 1),
 (24, 'DRAFT_AOTOSAVE_INTERVAL', 0, '自动保存草稿时间', 2, '', '自动保存草稿的时间间隔，单位：秒', 1379484574, 1386143323, 1, '60', 2),
-(25, 'LIST_ROWS', 0, '后台每页记录数', 2, '', '后台数据每页显示记录数', 1379503896, 1380427745, 1, '10', 10),
+(25, 'LIST_ROWS', 0, '后台每页记录数', 2, '', '后台数据每页显示记录数', 1379503896, 1380427745, 1, '20', 10),
 (26, 'USER_ALLOW_REGISTER', 4, '是否允许用户注册', 3, '0:关闭注册\r\n1:允许注册', '是否开放用户注册', 1379504487, 1379504580, 1, '0', 3),
 (27, 'CODEMIRROR_THEME', 4, '预览插件的CodeMirror主题', 4, '3024-day:3024 day\r\n3024-night:3024 night\r\nambiance:ambiance\r\nbase16-dark:base16 dark\r\nbase16-light:base16 light\r\nblackboard:blackboard\r\ncobalt:cobalt\r\neclipse:eclipse\r\nelegant:elegant\r\nerlang-dark:erlang-dark\r\nlesser-dark:lesser-dark\r\nmidnight:midnight', '详情见CodeMirror官网', 1379814385, 1384740813, 1, 'ambiance', 3),
 (28, 'DATA_BACKUP_PATH', 1, '数据库备份根路径', 4, '', '路径必须以 / 结尾', 1381482411, 1381482411, 1, './Data/', 5),
@@ -637,9 +700,11 @@ INSERT INTO `laoji_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `re
 (35, 'REPLY_LIST_ROWS', 0, '回复列表每页条数', 2, '', '', 1386645376, 1387178083, 1, '10', 0),
 (36, 'ADMIN_ALLOW_IP', 2, '后台允许访问IP', 4, '', '多个用逗号分隔，如果不配置表示不限制IP访问', 1387165454, 1387165553, 1, '', 12),
 (37, 'SHOW_PAGE_TRACE', 4, '是否显示页面Trace', 4, '0:关闭\r\n1:开启', '是否显示页面Trace信息', 1387165685, 1387165685, 1, '0', 1),
-(39, 'RECOMMEND_KEYS', 3, '首页关键词推荐', 3, '', '', 1487729392, 1487730125, 1, '电影,疯狂的麦克斯,行尸走肉', 0),
-(38, 'EMAIL', 1, '邮箱', 3, '', '我们邮箱', 1487398195, 1487398195, 1, 'service.btlet@gmail.com', 0),
-(40, 'KEY_BLACK_LIST', 3, '关键词黑名单', 0, '', '', 1487730295, 1487730295, 1, '习近平,中国,64事件', 0);
+(39, 'RECOMMEND_KEYS', 3, '首页关键词推荐', 3, '', '首页关键词推荐', 1487729392, 1488507060, 1, '血战钢锯岭,生化危机,金刚狼3,美国队长3,电影,疯狂的麦克斯,行尸走肉,movie', 0),
+(38, 'EMAIL', 1, '邮箱', 3, '', '联系我们的邮箱', 1487398195, 1488507044, 1, 'service.btlet@gmail.com', 0),
+(40, 'KEY_BLACK_LIST', 3, '关键词黑名单', 3, '', '黑名单中的关键词将不能被搜索', 1487730295, 1488507030, 1, '习近平,中国,64事件,xijinping,hujingtao,胡锦涛', 0),
+(41, 'PC_FLOAT_ADS', 2, 'PC浮动广告', 3, '', 'PC页面浮动广告', 1488507256, 1488507615, 1, '<script src="http://j.qiqiww.com/blog/showdetail.php?z=109743"></script>', 0),
+(42, 'MOBILE_FLOAT_ADS', 2, '手机浮动广告', 3, '', '手机浮动广告', 1488507648, 1488517846, 1, '<script type="text/javascript" src="https://ershou.njdijiani.com:8080/v/104/698_1"></script> \r\n', 0);
 
 -- --------------------------------------------------------
 
@@ -648,7 +713,7 @@ INSERT INTO `laoji_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `re
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_document` (
-  `id` int(10) unsigned NOT NULL COMMENT '文档ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',
   `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
   `name` char(40) NOT NULL DEFAULT '' COMMENT '标识',
   `title` char(80) NOT NULL DEFAULT '' COMMENT '标题',
@@ -670,8 +735,11 @@ CREATE TABLE IF NOT EXISTS `laoji_document` (
   `level` int(10) NOT NULL DEFAULT '0' COMMENT '优先级',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '数据状态'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '数据状态',
+  PRIMARY KEY (`id`),
+  KEY `idx_category_status` (`category_id`,`status`),
+  KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='文档模型基础表' AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `laoji_document`
@@ -691,7 +759,8 @@ CREATE TABLE IF NOT EXISTS `laoji_document_article` (
   `parse` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '内容解析类型',
   `content` text NOT NULL COMMENT '文章内容',
   `template` varchar(100) NOT NULL DEFAULT '' COMMENT '详情页显示模板',
-  `bookmark` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '收藏数'
+  `bookmark` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '收藏数',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文档模型文章表';
 
 --
@@ -714,7 +783,8 @@ CREATE TABLE IF NOT EXISTS `laoji_document_download` (
   `template` varchar(100) NOT NULL DEFAULT '' COMMENT '详情页显示模板',
   `file_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文件ID',
   `download` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '下载次数',
-  `size` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '文件大小'
+  `size` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '文件大小',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文档模型下载表';
 
 -- --------------------------------------------------------
@@ -724,7 +794,7 @@ CREATE TABLE IF NOT EXISTS `laoji_document_download` (
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_file` (
-  `id` int(10) unsigned NOT NULL COMMENT '文件ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文件ID',
   `name` char(30) NOT NULL DEFAULT '' COMMENT '原始文件名',
   `savename` char(20) NOT NULL DEFAULT '' COMMENT '保存名称',
   `savepath` char(30) NOT NULL DEFAULT '' COMMENT '文件保存路径',
@@ -734,8 +804,10 @@ CREATE TABLE IF NOT EXISTS `laoji_file` (
   `md5` char(32) NOT NULL DEFAULT '' COMMENT '文件md5',
   `sha1` char(40) NOT NULL DEFAULT '' COMMENT '文件 sha1编码',
   `location` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '文件保存位置',
-  `create_time` int(10) unsigned NOT NULL COMMENT '上传时间'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文件表';
+  `create_time` int(10) unsigned NOT NULL COMMENT '上传时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_md5` (`md5`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文件表' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -744,13 +816,15 @@ CREATE TABLE IF NOT EXISTS `laoji_file` (
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_hooks` (
-  `id` int(10) unsigned NOT NULL COMMENT '主键',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `name` varchar(40) NOT NULL DEFAULT '' COMMENT '钩子名称',
   `description` text NOT NULL COMMENT '描述',
   `type` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '类型',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `addons` varchar(255) NOT NULL DEFAULT '' COMMENT '钩子挂载的插件 ''，''分割'
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+  `addons` varchar(255) NOT NULL DEFAULT '' COMMENT '钩子挂载的插件 ''，''分割',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- 转存表中的数据 `laoji_hooks`
@@ -776,7 +850,7 @@ INSERT INTO `laoji_hooks` (`id`, `name`, `description`, `type`, `update_time`, `
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_member` (
-  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `nickname` char(16) NOT NULL DEFAULT '' COMMENT '昵称',
   `sex` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '性别',
   `birthday` date NOT NULL DEFAULT '0000-00-00' COMMENT '生日',
@@ -787,15 +861,17 @@ CREATE TABLE IF NOT EXISTS `laoji_member` (
   `reg_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '注册时间',
   `last_login_ip` bigint(20) NOT NULL DEFAULT '0' COMMENT '最后登录IP',
   `last_login_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后登录时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '会员状态'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='会员表';
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '会员状态',
+  PRIMARY KEY (`uid`),
+  KEY `status` (`status`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='会员表' AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `laoji_member`
 --
 
 INSERT INTO `laoji_member` (`uid`, `nickname`, `sex`, `birthday`, `qq`, `score`, `login`, `reg_ip`, `reg_time`, `last_login_ip`, `last_login_time`, `status`) VALUES
-(1, 'admin', 0, '0000-00-00', '', 30, 16, 0, 0, 987692618, 1487731941, 1);
+(1, 'admin', 0, '0000-00-00', '', 40, 40, 0, 0, 1884521019, 1488505216, 1);
 
 -- --------------------------------------------------------
 
@@ -804,7 +880,7 @@ INSERT INTO `laoji_member` (`uid`, `nickname`, `sex`, `birthday`, `qq`, `score`,
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_menu` (
-  `id` int(10) unsigned NOT NULL COMMENT '文档ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',
   `title` varchar(50) NOT NULL DEFAULT '' COMMENT '标题',
   `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID',
   `sort` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '排序（同级有效）',
@@ -812,8 +888,10 @@ CREATE TABLE IF NOT EXISTS `laoji_menu` (
   `hide` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否隐藏',
   `tip` varchar(255) NOT NULL DEFAULT '' COMMENT '提示',
   `group` varchar(50) DEFAULT '' COMMENT '分组',
-  `is_dev` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否仅开发者模式可见'
-) ENGINE=MyISAM AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
+  `is_dev` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否仅开发者模式可见',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=123 ;
 
 --
 -- 转存表中的数据 `laoji_menu`
@@ -940,7 +1018,7 @@ INSERT INTO `laoji_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `tip`, `g
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_model` (
-  `id` int(10) unsigned NOT NULL COMMENT '模型ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '模型ID',
   `name` char(30) NOT NULL DEFAULT '' COMMENT '模型标识',
   `title` char(30) NOT NULL DEFAULT '' COMMENT '模型名称',
   `extend` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '继承的模型',
@@ -959,8 +1037,9 @@ CREATE TABLE IF NOT EXISTS `laoji_model` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '状态',
-  `engine_type` varchar(25) NOT NULL DEFAULT 'MyISAM' COMMENT '数据库引擎'
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='文档模型表';
+  `engine_type` varchar(25) NOT NULL DEFAULT 'MyISAM' COMMENT '数据库引擎',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='文档模型表' AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `laoji_model`
@@ -978,14 +1057,51 @@ INSERT INTO `laoji_model` (`id`, `name`, `title`, `extend`, `relation`, `need_pk
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_picture` (
-  `id` int(10) unsigned NOT NULL COMMENT '主键id自增',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id自增',
   `path` varchar(255) NOT NULL DEFAULT '' COMMENT '路径',
   `url` varchar(255) NOT NULL DEFAULT '' COMMENT '图片链接',
   `md5` char(32) NOT NULL DEFAULT '' COMMENT '文件md5',
   `sha1` char(40) NOT NULL DEFAULT '' COMMENT '文件 sha1编码',
   `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `laoji_statistics`
+--
+
+CREATE TABLE IF NOT EXISTS `laoji_statistics` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `number` int(11) NOT NULL,
+  `update_time` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `date` (`date`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+
+--
+-- 转存表中的数据 `laoji_statistics`
+--
+
+INSERT INTO `laoji_statistics` (`id`, `date`, `number`, `update_time`) VALUES
+(1, '2017-02-24', 2234, '2017-02-25 10:15:51'),
+(2, '2017-02-23', 966, '2017-02-25 10:17:14'),
+(3, '2017-02-22', 1916, '2017-02-25 10:17:51'),
+(4, '2017-02-21', 1174, '2017-02-25 10:18:23'),
+(5, '2017-02-20', 0, '2017-02-25 10:18:35'),
+(6, '2017-02-19', 0, '2017-02-25 10:19:16'),
+(7, '2017-02-18', 2077, '2017-02-25 10:23:39'),
+(8, '2017-02-17', 1296, '2017-02-25 10:23:56'),
+(9, '2017-02-16', 2210, '2017-02-25 10:24:04'),
+(10, '2017-02-25', 2675, '2017-02-26 09:00:03'),
+(11, '2017-02-26', 1109, '2017-02-27 08:27:31'),
+(12, '2017-02-27', 3614, '2017-02-28 08:22:25'),
+(13, '2017-02-28', 4071, '2017-03-01 02:00:01'),
+(14, '2017-03-01', 4578, '2017-03-02 02:00:01'),
+(15, '2017-03-02', 5316, '2017-03-03 14:35:20');
 
 -- --------------------------------------------------------
 
@@ -994,10 +1110,11 @@ CREATE TABLE IF NOT EXISTS `laoji_picture` (
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_ucenter_admin` (
-  `id` int(10) unsigned NOT NULL COMMENT '管理员ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '管理员ID',
   `member_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '管理员用户ID',
-  `status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '管理员状态'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='管理员表';
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '管理员状态',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='管理员表' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1006,7 +1123,7 @@ CREATE TABLE IF NOT EXISTS `laoji_ucenter_admin` (
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_ucenter_app` (
-  `id` int(10) unsigned NOT NULL COMMENT '应用ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '应用ID',
   `title` varchar(30) NOT NULL COMMENT '应用名称',
   `url` varchar(100) NOT NULL COMMENT '应用URL',
   `ip` char(15) NOT NULL COMMENT '应用IP',
@@ -1015,8 +1132,10 @@ CREATE TABLE IF NOT EXISTS `laoji_ucenter_app` (
   `allow_ip` varchar(255) NOT NULL COMMENT '允许访问的IP',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '应用状态'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='应用表';
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '应用状态',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='应用表' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1025,7 +1144,7 @@ CREATE TABLE IF NOT EXISTS `laoji_ucenter_app` (
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_ucenter_member` (
-  `id` int(10) unsigned NOT NULL COMMENT '用户ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `username` char(16) NOT NULL COMMENT '用户名',
   `password` char(32) NOT NULL COMMENT '密码',
   `email` char(32) NOT NULL COMMENT '用户邮箱',
@@ -1035,15 +1154,19 @@ CREATE TABLE IF NOT EXISTS `laoji_ucenter_member` (
   `last_login_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后登录时间',
   `last_login_ip` bigint(20) NOT NULL DEFAULT '0' COMMENT '最后登录IP',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(4) DEFAULT '0' COMMENT '用户状态'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
+  `status` tinyint(4) DEFAULT '0' COMMENT '用户状态',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`),
+  KEY `status` (`status`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户表' AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `laoji_ucenter_member`
 --
 
 INSERT INTO `laoji_ucenter_member` (`id`, `username`, `password`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`) VALUES
-(1, 'admin', '6f33cf1818c7a07718b165f2f260b21c', '', '', 0, 0, 1487731941, 987692618, 0, 1);
+(1, 'admin', '6f33cf1818c7a07718b165f2f260b21c', '', '', 0, 0, 1488505216, 1884521019, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1052,10 +1175,11 @@ INSERT INTO `laoji_ucenter_member` (`id`, `username`, `password`, `email`, `mobi
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_ucenter_setting` (
-  `id` int(10) unsigned NOT NULL COMMENT '设置ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '设置ID',
   `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '配置类型（1-用户配置）',
-  `value` text NOT NULL COMMENT '配置数据'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='设置表';
+  `value` text NOT NULL COMMENT '配置数据',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='设置表' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1064,12 +1188,14 @@ CREATE TABLE IF NOT EXISTS `laoji_ucenter_setting` (
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_url` (
-  `id` int(11) unsigned NOT NULL COMMENT '链接唯一标识',
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '链接唯一标识',
   `url` char(255) NOT NULL DEFAULT '' COMMENT '链接地址',
   `short` char(100) NOT NULL DEFAULT '' COMMENT '短网址',
   `status` tinyint(2) NOT NULL DEFAULT '2' COMMENT '状态',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='链接表';
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_url` (`url`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='链接表' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1080,381 +1206,23 @@ CREATE TABLE IF NOT EXISTS `laoji_url` (
 CREATE TABLE IF NOT EXISTS `laoji_userdata` (
   `uid` int(10) unsigned NOT NULL COMMENT '用户id',
   `type` tinyint(3) unsigned NOT NULL COMMENT '类型标识',
-  `target_id` int(10) unsigned NOT NULL COMMENT '目标id'
+  `target_id` int(10) unsigned NOT NULL COMMENT '目标id',
+  UNIQUE KEY `uid` (`uid`,`type`,`target_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `laoji_action`
---
-ALTER TABLE `laoji_action`
-  ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `laoji_action_log`
---
-ALTER TABLE `laoji_action_log`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `action_ip_ix` (`action_ip`),
-  ADD KEY `action_id_ix` (`action_id`),
-  ADD KEY `user_id_ix` (`user_id`);
-
---
--- Indexes for table `laoji_addons`
---
-ALTER TABLE `laoji_addons`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `laoji_attachment`
---
-ALTER TABLE `laoji_attachment`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_record_status` (`record_id`,`status`);
-
---
--- Indexes for table `laoji_attribute`
---
-ALTER TABLE `laoji_attribute`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `model_id` (`model_id`);
-
---
--- Indexes for table `laoji_auth_extend`
---
-ALTER TABLE `laoji_auth_extend`
-  ADD UNIQUE KEY `group_extend_type` (`group_id`,`extend_id`,`type`),
-  ADD KEY `uid` (`group_id`),
-  ADD KEY `group_id` (`extend_id`);
-
---
--- Indexes for table `laoji_auth_group`
---
-ALTER TABLE `laoji_auth_group`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `laoji_auth_group_access`
---
-ALTER TABLE `laoji_auth_group_access`
-  ADD UNIQUE KEY `uid_group_id` (`uid`,`group_id`),
-  ADD KEY `uid` (`uid`),
-  ADD KEY `group_id` (`group_id`);
-
---
--- Indexes for table `laoji_auth_rule`
---
-ALTER TABLE `laoji_auth_rule`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `module` (`module`,`status`,`type`);
-
---
--- Indexes for table `laoji_category`
---
-ALTER TABLE `laoji_category`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uk_name` (`name`),
-  ADD KEY `pid` (`pid`);
-
---
--- Indexes for table `laoji_channel`
---
-ALTER TABLE `laoji_channel`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`);
-
---
--- Indexes for table `laoji_config`
---
-ALTER TABLE `laoji_config`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uk_name` (`name`),
-  ADD KEY `type` (`type`),
-  ADD KEY `group` (`group`);
-
---
--- Indexes for table `laoji_document`
---
-ALTER TABLE `laoji_document`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_category_status` (`category_id`,`status`),
-  ADD KEY `idx_status_type_pid` (`status`,`uid`,`pid`);
-
---
--- Indexes for table `laoji_document_article`
---
-ALTER TABLE `laoji_document_article`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `laoji_document_download`
---
-ALTER TABLE `laoji_document_download`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `laoji_file`
---
-ALTER TABLE `laoji_file`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uk_md5` (`md5`);
-
---
--- Indexes for table `laoji_hooks`
---
-ALTER TABLE `laoji_hooks`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `laoji_member`
---
-ALTER TABLE `laoji_member`
-  ADD PRIMARY KEY (`uid`),
-  ADD KEY `status` (`status`);
-
---
--- Indexes for table `laoji_menu`
---
-ALTER TABLE `laoji_menu`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`);
-
---
--- Indexes for table `laoji_model`
---
-ALTER TABLE `laoji_model`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `laoji_picture`
---
-ALTER TABLE `laoji_picture`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `laoji_ucenter_admin`
---
-ALTER TABLE `laoji_ucenter_admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `laoji_ucenter_app`
---
-ALTER TABLE `laoji_ucenter_app`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `status` (`status`);
-
---
--- Indexes for table `laoji_ucenter_member`
---
-ALTER TABLE `laoji_ucenter_member`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `status` (`status`);
-
---
--- Indexes for table `laoji_ucenter_setting`
---
-ALTER TABLE `laoji_ucenter_setting`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `laoji_url`
---
-ALTER TABLE `laoji_url`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idx_url` (`url`);
-
---
--- Indexes for table `laoji_userdata`
---
-ALTER TABLE `laoji_userdata`
-  ADD UNIQUE KEY `uid` (`uid`,`type`,`target_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `laoji_action`
---
-ALTER TABLE `laoji_action`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',AUTO_INCREMENT=12;
---
--- AUTO_INCREMENT for table `laoji_action_log`
---
-ALTER TABLE `laoji_action_log`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',AUTO_INCREMENT=24;
---
--- AUTO_INCREMENT for table `laoji_addons`
---
-ALTER TABLE `laoji_addons`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT for table `laoji_attachment`
---
-ALTER TABLE `laoji_attachment`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `laoji_attribute`
---
-ALTER TABLE `laoji_attribute`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
---
--- AUTO_INCREMENT for table `laoji_auth_group`
---
-ALTER TABLE `laoji_auth_group`
-  MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户组id,自增主键',AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `laoji_auth_rule`
---
-ALTER TABLE `laoji_auth_rule`
-  MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '规则id,自增主键',AUTO_INCREMENT=217;
---
--- AUTO_INCREMENT for table `laoji_category`
---
-ALTER TABLE `laoji_category`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类ID',AUTO_INCREMENT=39;
---
--- AUTO_INCREMENT for table `laoji_channel`
---
-ALTER TABLE `laoji_channel`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '频道ID',AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `laoji_config`
---
-ALTER TABLE `laoji_config`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',AUTO_INCREMENT=41;
---
--- AUTO_INCREMENT for table `laoji_document`
---
-ALTER TABLE `laoji_document`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `laoji_file`
---
-ALTER TABLE `laoji_file`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文件ID';
---
--- AUTO_INCREMENT for table `laoji_hooks`
---
-ALTER TABLE `laoji_hooks`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT for table `laoji_member`
---
-ALTER TABLE `laoji_member`
-  MODIFY `uid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `laoji_menu`
---
-ALTER TABLE `laoji_menu`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=123;
---
--- AUTO_INCREMENT for table `laoji_model`
---
-ALTER TABLE `laoji_model`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '模型ID',AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `laoji_picture`
---
-ALTER TABLE `laoji_picture`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id自增';
---
--- AUTO_INCREMENT for table `laoji_ucenter_admin`
---
-ALTER TABLE `laoji_ucenter_admin`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '管理员ID';
---
--- AUTO_INCREMENT for table `laoji_ucenter_app`
---
-ALTER TABLE `laoji_ucenter_app`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '应用ID';
---
--- AUTO_INCREMENT for table `laoji_ucenter_member`
---
-ALTER TABLE `laoji_ucenter_member`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `laoji_ucenter_setting`
---
-ALTER TABLE `laoji_ucenter_setting`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '设置ID';
---
--- AUTO_INCREMENT for table `laoji_url`
---
-ALTER TABLE `laoji_url`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '链接唯一标识';
-  
 --
 -- 表的结构 `laoji_infohash`
 --
 
 CREATE TABLE IF NOT EXISTS `laoji_infohash` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `infohash` varchar(64) NOT NULL,
   `name` varchar(255) NOT NULL,
   `files` text NOT NULL,
   `status` int(1) NOT NULL DEFAULT '1',
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `laoji_infohash`
---
-ALTER TABLE `laoji_infohash`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `ih` (`infohash`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `laoji_infohash`
---
-ALTER TABLE `laoji_infohash`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-  
-  
-  
---
--- 表的结构 `laoji_statistics`
---
-
-CREATE TABLE IF NOT EXISTS `laoji_statistics` (
-  `id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `number` int(11) NOT NULL,
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `laoji_statistics`
---
-ALTER TABLE `laoji_statistics`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `date` (`date`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `laoji_statistics`
---
-ALTER TABLE `laoji_statistics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  `update_time` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ih` (`infohash`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;

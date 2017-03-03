@@ -45,7 +45,7 @@ func main() {
 	checkErr(err)
 	defer db.Close()
 
-	stmt, err := db.Prepare(`INSERT laoji_infohash (infohash,name,files) values (?,?,?)`)
+	stmt, err := db.Prepare(`INSERT laoji_infohash (infohash,name,files,update_time) values (?,?,?,?)`)
 	checkErr(err)
 	defer stmt.Close()
 
@@ -91,8 +91,9 @@ func main() {
 			}
 
 			json_files, _ := json.Marshal(bt.Files)
+			update_time := time.Now().Format("2006-01-02 15:04:05")
 
-			res, err := stmt.Exec(bt.InfoHash, bt.Name, string(json_files))
+			res, err := stmt.Exec(bt.InfoHash, bt.Name, string(json_files), update_time)
 			if err != nil {
 				fmt.Println(err.Error())
 				continue
