@@ -53,7 +53,7 @@ func main() {
 		http.ListenAndServe(":8081", nil)
 	}()
 
-	w := dht.NewWire(65536, 1024, 256)
+	w := dht.NewWire(65536, 1024, 1024)
 	go func() {
 		for resp := range w.Response() {
 			metadata, err := dht.Decode(resp.MetadataInfo)
@@ -104,7 +104,6 @@ func main() {
 			}
 
 			log.Println(bt.InfoHash)
-			time.Sleep(1 * time.Second)
 		}
 	}()
 	go w.Run()
