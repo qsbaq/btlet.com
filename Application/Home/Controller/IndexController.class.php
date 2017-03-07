@@ -37,7 +37,7 @@ class IndexController extends HomeController {
             import('ORG.Util.Page');
             $listRows = C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
             $nowPage = $nowPage>1 ? $nowPage : 1;
-            $off=($nowPage-1)*$PageSize;
+            $off=($nowPage-1)*$listRows;
 
             $sphinx = new \SphinxClient();
             $sphinx->setServer("localhost", 9312);

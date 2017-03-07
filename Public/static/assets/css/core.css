@@ -47,12 +47,13 @@ nav.middle{ text-align: center;}
     color: #5CB85C;
     border-bottom: 3px solid #5CB85C;
 }
+.result-pagination span{ margin: 6px;}
 .result-pagination a {
     display: inline-block;
     font-size: 14px;
     /*margin-right: 8px;*/
     font-weight: normal;
-    margin:3px;
+    margin:6px;
 }
 
 .isShow .row{ text-align: left;}
