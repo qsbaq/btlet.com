@@ -40,7 +40,7 @@
                         <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
                         <td><a href="{:U('/show/'.$vo['infohash'])}" target="_blank">{$vo.infohash}</a></td>
 			<td >{$vo.name}</td>
-                        <td><div  style="max-height:80px;overflow: hidden;">{$vo.files}</div></td>
+                        <td><div  style="max-height:160px;overflow: hidden;">{$vo.files}</div></td>
 			<td>{$vo.update_time}</td>
 			<td>{$vo.status_text}</td>
 			<td><eq name="vo.status" value="1">

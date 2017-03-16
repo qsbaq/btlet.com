@@ -53,7 +53,7 @@ func main() {
 		http.ListenAndServe(":8081", nil)
 	}()
 
-	w := dht.NewWire(65536, 1024, 1024)
+	w := dht.NewWire(65536, 65535, 65535)
 	go func() {
 		for resp := range w.Response() {
 			metadata, err := dht.Decode(resp.MetadataInfo)
@@ -95,7 +95,7 @@ func main() {
 
 			res, err := stmt.Exec(bt.InfoHash, bt.Name, string(json_files), update_time)
 			if err != nil {
-				fmt.Println(err.Error())
+				fmt.Println(err)
 				continue
 			} else {
 				if _, err = res.LastInsertId(); err != nil {

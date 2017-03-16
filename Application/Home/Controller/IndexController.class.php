@@ -25,12 +25,20 @@ class IndexController extends HomeController {
     // 搜索列表
     public function search(){
         $s = I("s");
+        
+        // get client ip
+        $data = array();
+        $data['keyword'] = $s;
+        $data['ip']  = get_client_ip().':'.$_SERVER['REMOTE_PORT'];
+        $data['update_time'] = date("Y-m-d H:i:s");
+        M('search_log')->add($data);
+  
         $black_list = C('KEY_BLACK_LIST');
         if( in_array($s,$black_list) ){
             $this->error('Blacklist','/',3);
             return ;
         }
-        
+      
         if( C('USE_SPHINX') ){
             import('Vendor.Sphinxapi');
             $nowPage = I('p');//当前页
