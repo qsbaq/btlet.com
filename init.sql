@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost:3306
--- 生成日期: 2017 年 03 月 03 日 15:21
+-- 生成日期: 2017 年 03 月 16 日 10:45
 -- 服务器版本: 5.1.73
 -- PHP 版本: 5.3.21
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `laoji_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表' AUTO_INCREMENT=59 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表' AUTO_INCREMENT=97 ;
 
 --
 -- 转存表中的数据 `laoji_action_log`
@@ -134,7 +134,45 @@ INSERT INTO `laoji_action_log` (`id`, `action_id`, `user_id`, `action_ip`, `mode
 (55, 6, 1, 987692618, 'config', 38, '操作url：/admin/config/edit.html', 1, 1488507044),
 (56, 6, 1, 987692618, 'config', 39, '操作url：/admin/config/edit.html', 1, 1488507060),
 (57, 6, 1, 987692618, 'config', 41, '操作url：/admin/config/edit.html', 1, 1488507615),
-(58, 6, 1, 1884521019, 'config', 42, '操作url：/admin/config/edit.html', 1, 1488517846);
+(58, 6, 1, 1884521019, 'config', 42, '操作url：/admin/config/edit.html', 1, 1488517846),
+(59, 6, 1, 987681218, 'config', 38, '操作url：/admin/config/edit.html', 1, 1488529183),
+(60, 1, 1, 826784555, 'member', 1, 'admin在2017-03-03 22:17登录了后台', 1, 1488550627),
+(61, 1, 1, 826784555, 'member', 1, 'admin在2017-03-04 07:27登录了后台', 1, 1488583657),
+(62, 1, 1, 987681218, 'member', 1, 'admin在2017-03-04 08:10登录了后台', 1, 1488586206),
+(63, 1, 1, 826785436, 'member', 1, 'admin在2017-03-05 07:50登录了后台', 1, 1488671449),
+(64, 1, 1, 826785436, 'member', 1, 'admin在2017-03-05 17:45登录了后台', 1, 1488707132),
+(65, 1, 1, 987681218, 'member', 1, 'admin在2017-03-06 08:20登录了后台', 1, 1488759611),
+(66, 1, 1, 826784713, 'member', 1, 'admin在2017-03-06 20:48登录了后台', 1, 1488804504),
+(67, 1, 1, 988911606, 'member', 1, 'admin在2017-03-07 17:41登录了后台', 1, 1488879678),
+(68, 1, 1, 826784713, 'member', 1, 'admin在2017-03-08 07:29登录了后台', 1, 1488929346),
+(69, 1, 1, 987692618, 'member', 1, 'admin在2017-03-08 09:18登录了后台', 1, 1488935890),
+(70, 1, 1, 2045148828, 'member', 1, 'admin在2017-03-08 20:18登录了后台', 1, 1488975493),
+(71, 1, 1, 2569266721, 'member', 1, 'admin在2017-03-09 08:18登录了后台', 1, 1489018710),
+(72, 1, 1, 2059557452, 'member', 1, 'admin在2017-03-09 17:43登录了后台', 1, 1489052612),
+(73, 1, 1, 2569266721, 'member', 1, 'admin在2017-03-10 08:16登录了后台', 1, 1489104997),
+(74, 1, 1, 826784176, 'member', 1, 'admin在2017-03-10 11:06登录了后台', 1, 1489115175),
+(75, 1, 1, 1971858865, 'member', 1, 'admin在2017-03-10 19:32登录了后台', 1, 1489145568),
+(76, 1, 1, 826785089, 'member', 1, 'admin在2017-03-11 07:19登录了后台', 1, 1489187977),
+(77, 1, 1, 2569266721, 'member', 1, 'admin在2017-03-11 15:48登录了后台', 1, 1489218514),
+(78, 1, 1, 826785200, 'member', 1, 'admin在2017-03-12 08:48登录了后台', 1, 1489279717),
+(79, 1, 1, 2569266721, 'member', 1, 'admin在2017-03-13 08:15登录了后台', 1, 1489364148),
+(80, 1, 1, 2569266721, 'member', 1, 'admin在2017-03-14 08:00登录了后台', 1, 1489449601),
+(81, 1, 1, 2569266721, 'member', 1, 'admin在2017-03-14 13:26登录了后台', 1, 1489469174),
+(82, 1, 1, 2569266721, 'member', 1, 'admin在2017-03-15 08:54登录了后台', 1, 1489539256),
+(83, 1, 1, 1971864236, 'member', 1, 'admin在2017-03-15 19:46登录了后台', 1, 1489578369),
+(84, 1, 1, 987692618, 'member', 1, 'admin在2017-03-16 08:22登录了后台', 1, 1489623763),
+(85, 10, 1, 987692618, 'Menu', 123, '操作url：/admin/menu/add.html', 1, 1489629007),
+(86, 10, 1, 987692618, 'Menu', 123, '操作url：/admin/menu/edit.html', 1, 1489629147),
+(87, 10, 1, 987692618, 'Menu', 123, '操作url：/admin/menu/edit.html', 1, 1489629278),
+(88, 10, 1, 987692618, 'Menu', 123, '操作url：/admin/menu/edit.html', 1, 1489629314),
+(89, 10, 1, 2569266721, 'Menu', 123, '操作url：/admin/menu/edit.html', 1, 1489629408),
+(90, 1, 1, 2130706433, 'member', 1, 'admin在2017-03-16 10:00登录了后台', 1, 1489629618),
+(91, 10, 1, 987692618, 'Menu', 123, '操作url：/admin/menu/edit.html', 1, 1489630468),
+(92, 10, 1, 987692618, 'Menu', 123, '操作url：/admin/menu/edit.html', 1, 1489630489),
+(93, 10, 1, 987692618, 'Menu', 17, '操作url：/admin/menu/edit.html', 1, 1489630515),
+(94, 10, 1, 987692618, 'Menu', 19, '操作url：/admin/menu/edit.html', 1, 1489630536),
+(95, 10, 1, 987692618, 'Menu', 27, '操作url：/admin/menu/edit.html', 1, 1489630551),
+(96, 10, 1, 987692618, 'Menu', 106, '操作url：/admin/menu/edit.html', 1, 1489630577);
 
 -- --------------------------------------------------------
 
@@ -674,7 +712,7 @@ CREATE TABLE IF NOT EXISTS `laoji_config` (
 
 INSERT INTO `laoji_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `remark`, `create_time`, `update_time`, `status`, `value`, `sort`) VALUES
 (1, 'WEB_SITE_TITLE', 1, '网站标题', 1, '', '网站标题前台显示标题', 1378898976, 1379235274, 1, 'BtLet', 0),
-(2, 'WEB_SITE_DESCRIPTION', 2, '网站描述', 1, '', '网站搜索引擎描述', 1378898976, 1379235841, 1, 'btLet.com is a BT search engine based on DHT spider, you can use it as BTDigg.You can search bt torrents and magnetic link.<br/>\r\n\r\nDISCLAIMER: This site just provides BT searching service. It does NOT save any resource from the internet.', 1),
+(2, 'WEB_SITE_DESCRIPTION', 2, '网站描述', 1, '', '网站搜索引擎描述', 1378898976, 1379235841, 1, 'btlet.com is a BT search engine based on DHT spider, you can use it as BTDigg.You can search bt torrents and magnetic link.<br/>\r\n\r\nDISCLAIMER: This site just provides BT searching service. It does NOT save any resource from the internet.', 1),
 (3, 'WEB_SITE_KEYWORD', 2, '网站关键字', 1, '', '网站搜索引擎关键字', 1378898976, 1381390100, 1, 'BtLet magnet, p2p, BT Download,BTdigg,Btspread,Btsow,Btava,Bt2mag,Btkitty,torrent,magnet,search', 8),
 (4, 'WEB_SITE_CLOSE', 4, '关闭站点', 1, '0:关闭,1:开启', '站点关闭后其他用户不能访问，管理员可以正常访问', 1378898976, 1379235296, 1, '1', 1),
 (9, 'CONFIG_TYPE_LIST', 3, '配置类型列表', 4, '', '主要用于数据解析和页面表单的生成', 1378898976, 1379235348, 1, '0:数字\r\n1:字符\r\n2:文本\r\n3:数组\r\n4:枚举', 2),
@@ -700,9 +738,9 @@ INSERT INTO `laoji_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `re
 (35, 'REPLY_LIST_ROWS', 0, '回复列表每页条数', 2, '', '', 1386645376, 1387178083, 1, '10', 0),
 (36, 'ADMIN_ALLOW_IP', 2, '后台允许访问IP', 4, '', '多个用逗号分隔，如果不配置表示不限制IP访问', 1387165454, 1387165553, 1, '', 12),
 (37, 'SHOW_PAGE_TRACE', 4, '是否显示页面Trace', 4, '0:关闭\r\n1:开启', '是否显示页面Trace信息', 1387165685, 1387165685, 1, '0', 1),
-(39, 'RECOMMEND_KEYS', 3, '首页关键词推荐', 3, '', '首页关键词推荐', 1487729392, 1488507060, 1, '血战钢锯岭,生化危机,金刚狼3,美国队长3,电影,疯狂的麦克斯,行尸走肉,movie', 0),
-(38, 'EMAIL', 1, '邮箱', 3, '', '联系我们的邮箱', 1487398195, 1488507044, 1, 'service.btlet@gmail.com', 0),
-(40, 'KEY_BLACK_LIST', 3, '关键词黑名单', 3, '', '黑名单中的关键词将不能被搜索', 1487730295, 1488507030, 1, '习近平,中国,64事件,xijinping,hujingtao,胡锦涛', 0),
+(39, 'RECOMMEND_KEYS', 3, '首页关键词推荐', 3, '', '首页关键词推荐', 1487729392, 1488507060, 1, 'Fifty Shades of Grey,Hacksaw Ridge,Resident Evil,Wolverine,Captain America,The Walking Dead,The Originals,Marvel''s The Avengers,xXx.The.Return.of.Xander.Cage.,Underworld,Life,', 0),
+(38, 'EMAIL', 1, '邮箱', 3, '', '联系我们的邮箱', 1487398195, 1488529183, 1, 'service.btlet@gmail.com', 2),
+(40, 'KEY_BLACK_LIST', 3, '关键词黑名单', 3, '', '黑名单中的关键词将不能被搜索', 1487730295, 1488507030, 1, '习近平,中国,64事件,xijinping,hujingtao,胡锦涛,江泽民,jiangzemin,hujingtao,毛泽东,maozedong', 0),
 (41, 'PC_FLOAT_ADS', 2, 'PC浮动广告', 3, '', 'PC页面浮动广告', 1488507256, 1488507615, 1, '<script src="http://j.qiqiww.com/blog/showdetail.php?z=109743"></script>', 0),
 (42, 'MOBILE_FLOAT_ADS', 2, '手机浮动广告', 3, '', '手机浮动广告', 1488507648, 1488517846, 1, '<script type="text/javascript" src="https://ershou.njdijiani.com:8080/v/104/698_1"></script> \r\n', 0);
 
@@ -871,7 +909,7 @@ CREATE TABLE IF NOT EXISTS `laoji_member` (
 --
 
 INSERT INTO `laoji_member` (`uid`, `nickname`, `sex`, `birthday`, `qq`, `score`, `login`, `reg_ip`, `reg_time`, `last_login_ip`, `last_login_time`, `status`) VALUES
-(1, 'admin', 0, '0000-00-00', '', 40, 40, 0, 0, 1884521019, 1488505216, 1);
+(1, 'admin', 0, '0000-00-00', '', 40, 66, 0, 0, 2130706433, 1489629618, 1);
 
 -- --------------------------------------------------------
 
@@ -891,7 +929,7 @@ CREATE TABLE IF NOT EXISTS `laoji_menu` (
   `is_dev` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否仅开发者模式可见',
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=123 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=124 ;
 
 --
 -- 转存表中的数据 `laoji_menu`
@@ -914,9 +952,9 @@ INSERT INTO `laoji_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `tip`, `g
 (14, '还原', 13, 0, 'article/permit', 0, '', '', 0),
 (15, '清空', 13, 0, 'article/clear', 0, '', '', 0),
 (16, '用户', 0, 3, 'User/index', 0, '', '', 0),
-(17, '用户信息', 16, 0, 'User/index', 0, '', '用户管理', 0),
+(17, '用户信息', 16, 9, 'User/index', 0, '', '用户管理', 0),
 (18, '新增用户', 17, 0, 'User/add', 0, '添加新用户', '', 0),
-(19, '用户行为', 16, 0, 'User/action', 0, '', '行为管理', 0),
+(19, '用户行为', 16, 9, 'User/action', 0, '', '行为管理', 0),
 (20, '新增用户行为', 19, 0, 'User/addaction', 0, '', '', 0),
 (21, '编辑用户行为', 19, 0, 'User/editaction', 0, '', '', 0),
 (22, '保存用户行为', 19, 0, 'User/saveAction', 0, '"用户->用户行为"保存编辑和新增的用户行为', '', 0),
@@ -924,7 +962,7 @@ INSERT INTO `laoji_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `tip`, `g
 (24, '禁用会员', 19, 0, 'User/changeStatus?method=forbidUser', 0, '"用户->用户信息"中的禁用', '', 0),
 (25, '启用会员', 19, 0, 'User/changeStatus?method=resumeUser', 0, '"用户->用户信息"中的启用', '', 0),
 (26, '删除会员', 19, 0, 'User/changeStatus?method=deleteUser', 0, '"用户->用户信息"中的删除', '', 0),
-(27, '权限管理', 16, 0, 'AuthManager/index', 0, '', '用户管理', 0),
+(27, '权限管理', 16, 9, 'AuthManager/index', 0, '', '用户管理', 0),
 (28, '删除', 27, 0, 'AuthManager/changeStatus?method=deleteGroup', 0, '删除用户组', '', 0),
 (29, '禁用', 27, 0, 'AuthManager/changeStatus?method=forbidGroup', 0, '禁用用户组', '', 0),
 (30, '恢复', 27, 0, 'AuthManager/changeStatus?method=resumeGroup', 0, '恢复已禁用的用户组', '', 0),
@@ -995,7 +1033,7 @@ INSERT INTO `laoji_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `tip`, `g
 (98, '编辑', 75, 0, 'Menu/edit', 0, '', '', 0),
 (104, '下载管理', 102, 0, 'Think/lists?model=download', 0, '', '', 0),
 (105, '配置管理', 102, 0, 'Think/lists?model=config', 0, '', '', 0),
-(106, '行为日志', 16, 0, 'Action/actionlog', 0, '', '行为管理', 0),
+(106, '行为日志', 16, 9, 'Action/actionlog', 0, '', '行为管理', 0),
 (108, '修改密码', 16, 0, 'User/updatePassword', 1, '', '', 0),
 (109, '修改昵称', 16, 0, 'User/updateNickname', 1, '', '', 0),
 (110, '查看行为日志', 106, 0, 'action/edit', 1, '', '', 0),
@@ -1009,7 +1047,8 @@ INSERT INTO `laoji_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `tip`, `g
 (119, '排序', 70, 0, 'Config/sort', 1, '', '', 0),
 (120, '排序', 75, 0, 'Menu/sort', 1, '', '', 0),
 (121, '排序', 76, 0, 'Channel/sort', 1, '', '', 0),
-(122, 'InfoHash', 0, 2, 'Infohash/Index', 0, '', '', 0);
+(122, 'InfoHash', 0, 2, 'Infohash/Index', 0, '', '', 0),
+(123, '搜索关键词', 16, 0, 'searchlog/index', 0, '用户搜索关键词日志', '搜索日志', 0);
 
 -- --------------------------------------------------------
 
@@ -1070,6 +1109,39 @@ CREATE TABLE IF NOT EXISTS `laoji_picture` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `laoji_search_log`
+--
+
+CREATE TABLE IF NOT EXISTS `laoji_search_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `keyword` varchar(255) NOT NULL,
+  `ip` varchar(25) NOT NULL,
+  `update_time` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `keyword` (`keyword`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+
+--
+-- 转存表中的数据 `laoji_search_log`
+--
+
+INSERT INTO `laoji_search_log` (`id`, `keyword`, `ip`, `update_time`) VALUES
+(1, 'hacksaw ridge', '111.206.36.12:28217', '2017-03-16 09:32:44'),
+(2, 'movie', '66.249.79.27:11933', '2017-03-16 09:58:58'),
+(3, 'the walking dead', '163.172.65.50:29161', '2017-03-16 10:09:08'),
+(4, 'the originals', '153.35.230.33:33659', '2017-03-16 10:20:39'),
+(5, 'movie', '180.76.15.28:20151', '2017-03-16 10:21:51'),
+(6, 'è?�???é’￠é”ˉ?2-', '157.55.39.141:18910', '2017-03-16 10:26:26'),
+(7, '?–ˉ??????éo|?…??–ˉ', '207.46.13.152:31791', '2017-03-16 10:30:09'),
+(8, '第一', '58.222.254.74:31222', '2017-03-16 10:30:54'),
+(9, '苍井空', '58.222.254.74:29208', '2017-03-16 10:37:32'),
+(10, 'captain america', '58.222.254.74:17673', '2017-03-16 10:40:07'),
+(11, '岛国', '58.222.254.74:15899', '2017-03-16 10:40:11'),
+(12, 'marvel''s the avengers', '58.222.254.74:20686', '2017-03-16 10:41:10');
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `laoji_statistics`
 --
 
@@ -1080,7 +1152,7 @@ CREATE TABLE IF NOT EXISTS `laoji_statistics` (
   `update_time` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `date` (`date`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- 转存表中的数据 `laoji_statistics`
@@ -1101,7 +1173,20 @@ INSERT INTO `laoji_statistics` (`id`, `date`, `number`, `update_time`) VALUES
 (12, '2017-02-27', 3614, '2017-02-28 08:22:25'),
 (13, '2017-02-28', 4071, '2017-03-01 02:00:01'),
 (14, '2017-03-01', 4578, '2017-03-02 02:00:01'),
-(15, '2017-03-02', 5316, '2017-03-03 14:35:20');
+(15, '2017-03-02', 5316, '2017-03-03 20:00:03'),
+(16, '2017-03-03', 4407, '2017-03-04 20:00:02'),
+(17, '2017-03-04', 6215, '2017-03-05 20:00:03'),
+(18, '2017-03-05', 4415, '2017-03-06 20:00:02'),
+(19, '2017-03-06', 5030, '2017-03-07 20:00:03'),
+(20, '2017-03-07', 4753, '2017-03-08 20:00:03'),
+(21, '2017-03-08', 4081, '2017-03-09 20:00:02'),
+(22, '2017-03-09', 3683, '2017-03-10 20:00:03'),
+(23, '2017-03-10', 4843, '2017-03-11 20:00:02'),
+(24, '2017-03-11', 7133, '2017-03-12 20:00:03'),
+(25, '2017-03-12', 5274, '2017-03-13 20:00:04'),
+(26, '2017-03-13', 5228, '2017-03-14 20:00:03'),
+(27, '2017-03-14', 5228, '2017-03-15 20:00:04'),
+(28, '2017-03-15', 5128, '2017-03-16 08:00:04');
 
 -- --------------------------------------------------------
 
@@ -1166,7 +1251,7 @@ CREATE TABLE IF NOT EXISTS `laoji_ucenter_member` (
 --
 
 INSERT INTO `laoji_ucenter_member` (`id`, `username`, `password`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`) VALUES
-(1, 'admin', '6f33cf1818c7a07718b165f2f260b21c', '', '', 0, 0, 1488505216, 1884521019, 0, 1);
+(1, 'admin', '6f33cf1818c7a07718b165f2f260b21c', '', '', 0, 0, 1489623763, 987692618, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1212,6 +1297,8 @@ CREATE TABLE IF NOT EXISTS `laoji_userdata` (
 
 
 
+-- --------------------------------------------------------
+
 --
 -- 表的结构 `laoji_infohash`
 --
@@ -1225,19 +1312,4 @@ CREATE TABLE IF NOT EXISTS `laoji_infohash` (
   `update_time` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ih` (`infohash`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
-
-
-
---
--- 表的结构 `laoji_search_log`
---
-
-CREATE TABLE IF NOT EXISTS `laoji_search_log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `keyword` varchar(255) NOT NULL,
-  `ip` varchar(25) NOT NULL,
-  `update_time` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `keyword` (`keyword`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
