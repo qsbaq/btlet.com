@@ -11,7 +11,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"flag"
-	"fmt"
+	//"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -45,9 +45,17 @@ func main() {
 	checkErr(err)
 	defer db.Close()
 
-	stmt, err := db.Prepare(`INSERT laoji_infohash (infohash,name,files,update_time) values (?,?,?,?)`)
+	stmtS, err := db.Prepare(`SELECT COUNT(*) FROM laoji_infohash WHERE infohash=?`)
 	checkErr(err)
-	defer stmt.Close()
+	defer stmtS.Close()
+
+	stmtU, err := db.Prepare(`UPDATE laoji_infohash SET hits=hits+1,update_time=? WHERE infohash=?`)
+	checkErr(err)
+	defer stmtU.Close()
+
+	stmtI, err := db.Prepare(`INSERT laoji_infohash (infohash,name,files,update_time) values (?,?,?,?)`)
+	checkErr(err)
+	defer stmtI.Close()
 
 	go func() {
 		http.ListenAndServe(":8081", nil)
@@ -93,17 +101,18 @@ func main() {
 			json_files, _ := json.Marshal(bt.Files)
 			update_time := time.Now().Format("2006-01-02 15:04:05")
 
-			res, err := stmt.Exec(bt.InfoHash, bt.Name, string(json_files), update_time)
-			if err != nil {
-				fmt.Println(err)
-				continue
+			var resNum int
+			err = stmtS.QueryRow(bt.InfoHash).Scan(&resNum)
+			checkErr(err)
+
+			if resNum == 0 {
+				_, err := stmtI.Exec(bt.InfoHash, bt.Name, string(json_files), update_time)
+				checkErr(err)
+				log.Println(bt.InfoHash + " , " + bt.Name)
 			} else {
-				if _, err = res.LastInsertId(); err != nil {
-					panic(err)
-				}
+				log.Println("Skip Repeat -> " + bt.InfoHash)
 			}
 
-			log.Println(bt.InfoHash)
 		}
 	}()
 	go w.Run()

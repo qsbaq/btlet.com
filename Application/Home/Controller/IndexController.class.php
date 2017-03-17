@@ -51,7 +51,7 @@ class IndexController extends HomeController {
             $sphinx->setServer("localhost", 9312);
             $sphinx->setMatchMode(SPH_MATCH_EXTENDED);   //匹配模式 ANY为关键词自动拆词，ALL为不拆词匹配（完全匹配）
             $sphinx->SetFilter ('status',1);
-            $sphinx->SetSortMode ( SPH_SORT_ATTR_DESC, "update_time" );
+            $sphinx->SetSortMode ( SPH_SORT_EXTENDED, "update_time DESC" );
             $sphinx->SetArrayResult ( true );	//返回的结果集为数组
             $sphinx->SetLimits($off,$listRows);//传递当前页面所需的数据条数的参数
             $result = $sphinx->query( $s ,"*");	//星号为所有索引源
