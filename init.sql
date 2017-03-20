@@ -1308,6 +1308,7 @@ CREATE TABLE IF NOT EXISTS `laoji_infohash` (
   `infohash` varchar(64) NOT NULL,
   `name` varchar(255) NOT NULL,
   `files` text NOT NULL,
+  `hits` int(11) NOT NULL DEFAULT '0',
   `status` int(1) NOT NULL DEFAULT '1',
   `update_time` datetime NOT NULL,
   PRIMARY KEY (`id`),

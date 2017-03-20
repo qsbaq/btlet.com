@@ -48,10 +48,10 @@ class IndexController extends HomeController {
             $off=($nowPage-1)*$listRows;
 
             $sphinx = new \SphinxClient();
-            $sphinx->setServer("localhost", 9312);
+            $sphinx->setServer("127.0.0.1", 9312);
             $sphinx->setMatchMode(SPH_MATCH_EXTENDED);   //匹配模式 ANY为关键词自动拆词，ALL为不拆词匹配（完全匹配）
             $sphinx->SetFilter ('status',1);
-            $sphinx->SetSortMode ( SPH_SORT_EXTENDED, "update_time DESC" );
+            $sphinx->SetSortMode ( SPH_SORT_EXTENDED2, "hits DESC,update_time DESC" );
             $sphinx->SetArrayResult ( true );	//返回的结果集为数组
             $sphinx->SetLimits($off,$listRows);//传递当前页面所需的数据条数的参数
             $result = $sphinx->query( $s ,"*");	//星号为所有索引源
@@ -65,7 +65,7 @@ class IndexController extends HomeController {
             $ids = rtrim($ids,',');
             $where =array();
             $where['id'] = array('in',$ids);
-            $lists = M('infohash')->where($where)->order("update_time desc")->select();
+            $lists = M('infohash')->where($where)->order("hits DESC,update_time desc")->select();
             $sphinx->close();
             $page = new \Think\Page($total, $listRows);
             $p = $page->show();

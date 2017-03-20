@@ -49,6 +49,10 @@ func main() {
 	checkErr(err)
 	defer stmtS.Close()
 
+	stmtU, err := db.Prepare(`UPDATE laoji_infohash SET hits=hits+1,update_time=? WHERE infohash=?`)
+	checkErr(err)
+	defer stmtS.Close()
+
 	stmtI, err := db.Prepare(`INSERT laoji_infohash (infohash,name,files,update_time) values (?,?,?,?)`)
 	checkErr(err)
 	defer stmtI.Close()
@@ -106,7 +110,9 @@ func main() {
 				checkErr(err)
 				log.Println(bt.InfoHash + " , " + bt.Name)
 			} else {
-				log.Println("Skip Repeat -> " + bt.InfoHash)
+				_, err := stmtU.Exec(update_time, bt.InfoHash)
+				checkErr(err)
+				log.Println(bt.InfoHash + " , + 1 ")
 			}
 
 		}

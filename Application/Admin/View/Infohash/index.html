@@ -28,6 +28,7 @@
 		<th class="">InfoHash</th>
 		<th class="">Name</th>
 		<th class="">Files</th>
+		<th class="">Hits</th>
 		<th class="">录入时间</th>
 		<th class="">状态</th>
 		<th class="">操作</th>
@@ -41,6 +42,7 @@
                         <td><a href="{:U('/show/'.$vo['infohash'])}" target="_blank">{$vo.infohash}</a></td>
 			<td >{$vo.name}</td>
                         <td><div  style="max-height:160px;overflow: hidden;">{$vo.files}</div></td>
+			<td>{$vo.hits}</td>
 			<td>{$vo.update_time}</td>
 			<td>{$vo.status_text}</td>
 			<td><eq name="vo.status" value="1">
