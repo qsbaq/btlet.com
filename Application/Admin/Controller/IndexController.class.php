@@ -22,11 +22,12 @@ class IndexController extends AdminController {
      */
     public function index(){
         if(UID){
-            $data = M('statistics')->where()->order('date asc')->limit(30)->select();
-            foreach($data as $k => $v){
-                $date[] = $v["date"];
-                $rows .= $v['number'].",";
-                $all += $v['number'];
+            $data = M('statistics')->where()->order('date DESC')->limit(30)->select();
+            $nums = count($data)-1;
+            for($i=$nums ;$i>=0 ;$i--){
+                $date[] = $data[$i]['date'];
+                $rows .= $data[$i]["number"].",";
+                $all += $data[$i]["number"];
             }
             $this->meta_title = '管理首页';
             $this->assign('date',$date);
