@@ -81,7 +81,6 @@ class IndexController extends HomeController {
         $this->assign('list',$lists);
     	$this->display();
     }
-
     
     //  详情页
     public function show(){
@@ -93,6 +92,25 @@ class IndexController extends HomeController {
         $this->assign('the_title',$data['name']);
         $this->assign('data',$data);
         $this->display();
+    }
+    
+    public function topic(){
+        $SLObj = M('search_log');
+        $STObj = M('search_topic');
+        $time = date("Y-m-d H:i:s",time());
+        $topic = $SLObj->distinct(true)->field('keyword')->select();
+        echo "=== Update topic List {$topic} ===";
+        foreach( $topic as $key => $val ){
+            $result = $STObj->where(['keyword'=>$val['keyword']])->select();
+            $nums = count($result);
+            if( $result ){
+                echo 'Update : '.$val['keyword']."\n";
+                $STObj->where('id='.$result['id'])->data(['number'=>$nums,'update_time'=>$time])->save();
+            }else{
+                echo 'Add : '.$val['keyword']."\n";
+                $STObj->data(['id'=>$result['id'],'number'=>$nums,'update_time'=>$time])->add();
+            }
+        }
     }
     
 }
