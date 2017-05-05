@@ -18,16 +18,30 @@
                         <button type="submit" class="btn btn-lg btn-success square index-search-btn" onclick="onSearch(search,1,'x')">Search</button>
                     </div>
 
-                    <div class="recommend" id="recommend-list">
-                        <volist name="reckeys" id="data">
-                        <a href="{:U('s/'.$data);}" title='{$data}'><span>{$data}</span></a>
-                        </volist>
-                    </div>
                 </div>
                 <div class="middle search">
                     
                 </div>
             </div>
+        </div>
+    </div>
+    <div class='topic-rec jads'>    
+        <div class='col-md-1'></div>
+        <div class="col-md-5 jads">
+            <h4>Ranking</h4>
+            <ul class="list-group">
+                <volist name="topic" id="data">
+                    <li class="list-group-item"><a href="{:U('s/'.$data['keyword']);}">{$data['keyword']}({$data['hits']})</a></li>
+                </volist>
+            </ul>
+        </div>
+        <div class="col-md-5 jads" id="recommend-list">
+            <h4>Recommend</h4>
+            <ul class="list-group">
+            <volist name="reckeys" id="data">
+                <li class="list-group-item"><a href="{:U('s/'.$data);}" title='{$data}'><span>{$data}</span></a></li>
+            </volist>
+            </ul>
         </div>
     </div>
 </block>

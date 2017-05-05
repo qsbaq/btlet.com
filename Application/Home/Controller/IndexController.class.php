@@ -18,6 +18,9 @@ class IndexController extends HomeController {
     //系统首页
     public function index(){
         $recKeys = C('RECOMMEND_KEYS');
+        $page_size = count( $recKeys );
+        $topic = M('search_topic')->order('hits desc,update_time desc')->limit($page_size)->select();
+        $this->assign('topic',$topic);
         $this->assign('reckeys',$recKeys);
         $this->display();
     }
@@ -77,6 +80,10 @@ class IndexController extends HomeController {
             $MShipInfo = M('infohash');
             $lists = $this->lists($MShipInfo,array('name|files' => array('like','%'.$s.'%'),'status'=>1),'id DESC');
         }
+        $recKeys = C('RECOMMEND_KEYS');
+        $topic = M('search_topic')->order('hits desc,update_time desc')->limit(20)->select();
+        $this->assign('reckeys',$recKeys);
+        $this->assign('topic',$topic);
         $this->assign('the_title',$s);
         $this->assign('list',$lists);
     	$this->display();
@@ -88,28 +95,36 @@ class IndexController extends HomeController {
             'infohash'  =>  I('hash'),
             'status'    => 1
         ))->find();
-        //print_r($data);
+        $recKeys = C('RECOMMEND_KEYS');
+        $topic = M('search_topic')->order('hits desc,update_time desc')->limit(20)->select();
+        $this->assign('reckeys',$recKeys);
+        $this->assign('topic',$topic);
         $this->assign('the_title',$data['name']);
         $this->assign('data',$data);
         $this->display();
     }
     
-    public function topic(){
-        $SLObj = M('search_log');
-        $STObj = M('search_topic');
-        $time = date("Y-m-d H:i:s",time());
-        $topic = $SLObj->distinct(true)->field('keyword')->select();
-        echo "=== Update topic List {$topic} ===";
-        foreach( $topic as $key => $val ){
-            $result = $STObj->where(['keyword'=>$val['keyword']])->select();
-            $nums = count($result);
+    // 统计排行榜的脚本
+    public function ranking(){
+        $n = I('get.n',0,int);
+        $ary = M('search_log')->distinct(true)->field('keyword')->select();
+        $countAry = count($ary);
+        $now = date('Y-m-d H:i:s',time());
+        if( $ary[$n] ){
+            $k = $ary[$n]['keyword'];
+//            var_dump($ary[$n]);
+            $result = M('search_topic')->where(array('keyword'=>$k))->select();
+            $hits = M('search_log')->where(array('keyword'=>$k))->count();
             if( $result ){
-                echo 'Update : '.$val['keyword']."\n";
-                $STObj->where('id='.$result['id'])->data(['number'=>$nums,'update_time'=>$time])->save();
+                echo 'Update : '.$k."\n";
+                M('search_topic')->where('id='.$result['id'])->data(array('hits'=>$hits,'update_time'=>$now))->save();
             }else{
-                echo 'Add : '.$val['keyword']."\n";
-                $STObj->data(['id'=>$result['id'],'number'=>$nums,'update_time'=>$time])->add();
+                echo 'Add : '.$k."\n";
+                M('search_topic')->add(array('keyword'=>$k,'hits'=>$hits,'update_time'=>$now));
             }
+            $this->success('Next KeyWord : '. $ary[$n+1]['keyword'],U('index/ranking',array('n'=>$n+1)));
+        }else{
+            $this->success('Finished.',U('/'));
         }
     }
     

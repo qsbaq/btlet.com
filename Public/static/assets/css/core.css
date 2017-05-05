@@ -10,7 +10,7 @@ body,.row,.col-md-6{ margin: 0 auto; text-align: center; max-width: 1024px;}
 .file_list{ font-size:14px;font-weight: normal;}
 .file_list ul li{ margin: 6px;}
 .input-lg,.btn-lg,.navbar-form .form-control,.navbar-form .btn{ border-radius:0px;}
-.isIndex{ margin:16% auto;}
+.isIndex{ margin-top:12%}
 .isIndex .middle input{ float: left; width: 558px;}
 .isIndex .index-search{ text-align: center; width: 100%; clear: both;height:48px;}
 .isIndex .middle button{ float: left;}
@@ -87,3 +87,6 @@ nav.middle{ text-align: center;}
 .highlight { color: red; font-weight:bold; }
 .jjump{ line-height:36px; margin-left: 12px;}
 .isAbout #list-panel img { margin: 12px auto 12px 24px; width:100%;}
+
+
+.jads{ text-align: center;margin: 0 auto;}

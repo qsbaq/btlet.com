@@ -6,7 +6,7 @@
     <div class="container-fluid content isSearch">
         <include file='Public/header'/>
         <div class="row  custom-panel">
-            <div class="col-xs-6 col-md-7">
+            <div class="col-md-7">
                 <div id="list-panel">
                     <p id="search-count">About {$_total} results.<?php if( C('USE_SPHINX')){ ?>({$_time} seconds) <?php }?></p><br/>
                 <volist name="list" id="data">
@@ -34,6 +34,23 @@
                     </ul>
                 </nav>
             </div>
+            <div class='col-md-2'></div>
+            <div class="col-md-3">
+                <h4>Ranking</h4>
+                <ul class="list-group">
+                    <volist name="topic" id="data">
+                        <li class="list-group-item"><a href="{:U('s/'.$data['keyword']);}">{$data['keyword']}({$data['hits']})</a></li>
+                    </volist>
+                </ul>
+                
+                <h4>Recommend</h4>
+                <ul class="list-group">
+                <volist name="reckeys" id="data">
+                    <li class="list-group-item"><a href="{:U('s/'.$data);}" title='{$data}'><span>{$data}</span></a></li>
+                </volist>
+                </ul>
+            </div>
+            
         </div>
     </div>
 </block>        

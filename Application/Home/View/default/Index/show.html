@@ -11,9 +11,7 @@
             $the_href = str_replace(array('Index/Show/','index/show/'),'',U('Index/Show',array('show'=>$data['infohash'])));
         ?>
         <div class="row  custom-panel">
-            <div class="col-xs-6 col-md-1"></div>
-            <div class="col-xs-6 col-md-8">
-                <div class="panel panel-default">
+            <div class="col-md-8">
                     <div class="panel-body" id="list-panel">
                         <h4><a href="{$the_href}" title="{$the_title}">{$the_title}</a><h4>
                         <p></p>
@@ -42,8 +40,26 @@
                             </div>
                         </div>                    
                     </div>
-                </div>
             </div>
+            
+            <div class='col-md-1'></div>
+            <div class="col-md-3">
+                <h4>Ranking</h4>
+                <ul class="list-group">
+                    <volist name="topic" id="data">
+                        <li class="list-group-item"><a href="{:U('s/'.$data['keyword']);}">{$data['keyword']}({$data['hits']})</a></li>
+                    </volist>
+                </ul>
+                
+                <h4>Recommend</h4>
+                <ul class="list-group">
+                <volist name="reckeys" id="data">
+                    <li class="list-group-item"><a href="{:U('s/'.$data);}" title='{$data}'><span>{$data}</span></a></li>
+                </volist>
+                </ul>
+            </div>
+            
+            
         </div>
     </div>
        
