@@ -10,7 +10,7 @@ class SearchlogController extends AdminController {
 
         $list  = $this->lists('search_log');
         for( $i=0;$i<count($list);$i++):
-            $temp = split(":",$list[$i]['ip']);
+            $temp = explode(":",$list[$i]['ip']);
             $list[$i]['location'] = $this->getIPLoc_sina($temp[0]);
         endfor;
 
