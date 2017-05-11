@@ -5,6 +5,8 @@
     ================================================== -->
     <div class="container-fluid content isShow">
         <include file='Public/header'/>
+        <include file='Public/ads'/>
+
         <?php 
             $the_hash = 'magnet:?xt=urn:btih:'.$data['infohash'];
             $the_files = json_decode($data['files'],TRUE);

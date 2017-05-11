@@ -704,14 +704,14 @@ CREATE TABLE IF NOT EXISTS `laoji_config` (
   UNIQUE KEY `uk_name` (`name`),
   KEY `type` (`type`),
   KEY `group` (`group`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=45 ;
 
 --
 -- 转存表中的数据 `laoji_config`
 --
 
 INSERT INTO `laoji_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `remark`, `create_time`, `update_time`, `status`, `value`, `sort`) VALUES
-(1, 'WEB_SITE_TITLE', 1, '网站标题', 1, '', '网站标题前台显示标题', 1378898976, 1379235274, 1, 'BtLet', 0),
+(1, 'WEB_SITE_TITLE', 1, '网站标题', 1, '', '网站标题前台显示标题', 1378898976, 1379235274, 1, 'BtLet-Free bt search engine.', 0),
 (2, 'WEB_SITE_DESCRIPTION', 2, '网站描述', 1, '', '网站搜索引擎描述', 1378898976, 1379235841, 1, 'btlet.com is a BT search engine based on DHT spider, you can use it as BTDigg.You can search bt torrents and magnetic link.<br/>\r\n\r\nDISCLAIMER: This site just provides BT searching service. It does NOT save any resource from the internet.', 1),
 (3, 'WEB_SITE_KEYWORD', 2, '网站关键字', 1, '', '网站搜索引擎关键字', 1378898976, 1381390100, 1, 'BtLet magnet, p2p, BT Download,BTdigg,Btspread,Btsow,Btava,Bt2mag,Btkitty,torrent,magnet,search', 8),
 (4, 'WEB_SITE_CLOSE', 4, '关闭站点', 1, '0:关闭,1:开启', '站点关闭后其他用户不能访问，管理员可以正常访问', 1378898976, 1379235296, 1, '1', 1),
@@ -738,11 +738,13 @@ INSERT INTO `laoji_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `re
 (35, 'REPLY_LIST_ROWS', 0, '回复列表每页条数', 2, '', '', 1386645376, 1387178083, 1, '10', 0),
 (36, 'ADMIN_ALLOW_IP', 2, '后台允许访问IP', 4, '', '多个用逗号分隔，如果不配置表示不限制IP访问', 1387165454, 1387165553, 1, '', 12),
 (37, 'SHOW_PAGE_TRACE', 4, '是否显示页面Trace', 4, '0:关闭\r\n1:开启', '是否显示页面Trace信息', 1387165685, 1387165685, 1, '0', 1),
-(39, 'RECOMMEND_KEYS', 3, '首页关键词推荐', 3, '', '首页关键词推荐', 1487729392, 1488507060, 1, 'Fifty Shades of Grey,Hacksaw Ridge,Resident Evil,Wolverine,Captain America,The Walking Dead,The Originals,Marvel''s The Avengers,xXx.The.Return.of.Xander.Cage.,Underworld,Life,', 0),
+(39, 'RECOMMEND_KEYS', 3, '首页关键词推荐', 3, '', '首页关键词推荐', 1487729392, 1488507060, 1, 'Fifty Shades of Grey,Hacksaw Ridge,Resident Evil,Wolverine,Captain America,The Walking Dead,The Originals,Marvel''s The Avengers,xXx The Return of Xander Cage,Underworld,Life,Star Wars,Kung Fu Yoga,Buddies in India,Life,Prison Break,Ghost In The Shell,', 0),
 (38, 'EMAIL', 1, '邮箱', 3, '', '联系我们的邮箱', 1487398195, 1488529183, 1, 'service.btlet@gmail.com', 2),
-(40, 'KEY_BLACK_LIST', 3, '关键词黑名单', 3, '', '黑名单中的关键词将不能被搜索', 1487730295, 1488507030, 1, '习近平,中国,64事件,xijinping,hujingtao,胡锦涛,江泽民,jiangzemin,hujingtao,毛泽东,maozedong', 0),
-(41, 'PC_FLOAT_ADS', 2, 'PC浮动广告', 3, '', 'PC页面浮动广告', 1488507256, 1488507615, 1, '<script src="http://j.qiqiww.com/blog/showdetail.php?z=109743"></script>', 0),
-(42, 'MOBILE_FLOAT_ADS', 2, '手机浮动广告', 3, '', '手机浮动广告', 1488507648, 1488517846, 1, '<script type="text/javascript" src="https://ershou.njdijiani.com:8080/v/104/698_1"></script> \r\n', 0);
+(40, 'KEY_BLACK_LIST', 3, '关键词黑名单', 3, '', '黑名单中的关键词将不能被搜索', 1487730295, 1488507030, 1, '习近平,中国,64事件,xijinping,hujingtao,胡锦涛,江泽民,jiangzemin,hujingtao,毛泽东,maozedong,幼交,成人,色情,情色,', 0),
+(41, 'PC_ADS', 2, 'PC广告', 3, '', 'PC页面广告', 1488507256, 1494470448, 1, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>\r\n \r\n<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5747152597696861" data-ad-slot="7432159636" data-ad-format="link"></ins>\r\n<script type="text/rocketscript">\r\n(adsbygoogle = window.adsbygoogle || []).push({});\r\n</script>', 0),
+(42, 'MOBILE_ADS', 2, '手机广告', 3, '', '手机广告', 1488507648, 1494470425, 1, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>\r\n \r\n<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5747152597696861" data-ad-slot="8908892839" data-ad-format="auto"></ins>\r\n<script type="text/rocketscript">\r\n(adsbygoogle = window.adsbygoogle || []).push({});\r\n</script>', 0),
+(43, '__ANALYSIS__', 2, '网站统计代码', 3, '', '统计代码', 1494317728, 1494317728, 1, '<script>\r\n  (function(i,s,o,g,r,a,m){i[''GoogleAnalyticsObject'']=r;i[r]=i[r]||function(){\r\n  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\r\n  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\r\n  })(window,document,''script'',''https://www.google-analytics.com/analytics.js'',''ga'');\r\n\r\n  ga(''create'', ''UA-75759562-2'', ''auto'');\r\n  ga(''send'', ''pageview'');\r\n\r\n</script>\r\n\r\n<script type="text/rocketscript">\r\nvar _hmt = _hmt || [];\r\n(function() {\r\n  var hm = document.createElement("script");\r\n  hm.src = "https://hm.baidu.com/hm.js?a5e4de1a66d52c9057fdb1804f8c9a8b";\r\n  var s = document.getElementsByTagName("script")[0]; \r\n  s.parentNode.insertBefore(hm, s);\r\n})();\r\n</script>\r\n', 0),
+(44, 'MOBILE_HEAD_ADS', 2, '手机HEAD广告', 3, '', '手机网页级广告', 1494470235, 1494470368, 1, '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>\r\n<script type="text/rocketscript">\r\n  (adsbygoogle = window.adsbygoogle || []).push({\r\n    google_ad_client: "ca-pub-5747152597696861",\r\n    enable_page_level_ads: true\r\n  });\r\n</script>', 0);
 
 -- --------------------------------------------------------
 

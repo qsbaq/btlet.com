@@ -2,10 +2,9 @@
 <html>
 <head>
 	<include file="Public/head"/>
+        <?php if( isMobile() && C('MOBILE_HEAD_ADS') ) { echo C('MOBILE_HEAD_ADS');}   ?>
 </head>
 <body>
-
-	
 	<!-- 主体 -->
 	<include file="Public/body"/>
 	<!-- /主体 -->
