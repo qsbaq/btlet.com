@@ -5,8 +5,6 @@
     ================================================== -->
     <div class="container-fluid content isShow">
         <include file='Public/header'/>
-        <include file='Public/ads'/>
-
         <?php 
             $the_hash = 'magnet:?xt=urn:btih:'.$data['infohash'];
             $the_files = json_decode($data['files'],TRUE);
@@ -29,6 +27,7 @@
                                 </button>
                                 <a href="{$the_hash}" title="{$the_title} Download" type="button" class="btn btn-md btn-success infohash-button square" id="download">Download</a>
                             </div>
+                            <include file='Public/ads'/>
                         </div>
                         <p>Time:<span class="listinfo">{$data["update_time"]}</span></p>
                         <div class="panel panel-default">
@@ -46,6 +45,7 @@
             
             <div class='col-md-1'></div>
             <div class="col-md-3">
+                <include file='Public/ads'/>
                 <h4>Ranking</h4>
                 <ul class="list-group">
                     <volist name="topic" id="data">
