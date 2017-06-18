@@ -95,6 +95,10 @@ class IndexController extends HomeController {
             'infohash'  =>  I('hash'),
             'status'    => 1
         ))->find();
+        if( !$data ){
+            $this->error('403 Forbidden','/',3);
+            return ;
+        }        
         $recKeys = C('RECOMMEND_KEYS');
         $topic = M('search_topic')->order('hits desc,update_time desc')->limit(20)->select();
         $this->assign('reckeys',$recKeys);
