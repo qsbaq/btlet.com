@@ -11,6 +11,8 @@ class SearchlogController extends AdminController {
         $list  = $this->lists('search_log');
         for( $i=0;$i<count($list);$i++):
             $temp = explode(":",$list[$i]['ip']);
+            $list[$i]['ip'] = $temp[0];
+            $list[$i]['port'] = $temp[1];
             $list[$i]['location'] = $this->getIPLoc_sina($temp[0]);
         endfor;
 
@@ -29,7 +31,7 @@ class SearchlogController extends AdminController {
         $location = json_decode($location);    
         curl_close($ch);         
         $loc = "";   
-        if($location===FALSE) return "";     
+        if($location===FALSE) return;     
         if (empty($location->desc)) {    
             $loc = $location->province.$location->city.$location->district.$location->isp;  
         }else{         
@@ -39,7 +41,7 @@ class SearchlogController extends AdminController {
     }
     
     private function getIPLoc_baidu($queryIP){
-        $url = 'http://api.map.baidu.com/location/ip?ak=898ee94ce86557b46620bf4920fc8eac&coor=bd09ll?ip='.$queryIP;    
+        $url = 'https://api.map.baidu.com/location/ip?ak=RH2EBCLH760prU4rIiFtyq4KFApK2rf9&coor=bd09ll?ip='.$queryIP;    
         $ch = curl_init($url);     
         curl_setopt($ch,CURLOPT_ENCODING ,'utf8');     
         curl_setopt($ch, CURLOPT_TIMEOUT, 5);   
@@ -48,7 +50,9 @@ class SearchlogController extends AdminController {
         $location = json_decode($location);    
         curl_close($ch);         
         $loc = "";   
-        $loc = $location->content->address;    
+        if($location===FALSE) return;   
+//        var_dump($location);
+        $loc = $location->address;    
         return $loc;
     }
 

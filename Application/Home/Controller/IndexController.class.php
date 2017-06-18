@@ -38,8 +38,7 @@ class IndexController extends HomeController {
   
         $black_list = C('KEY_BLACK_LIST');
         if( in_array($s,$black_list) ){
-            $this->error('Blacklist','/',3);
-            return ;
+            $this->error('403 Forbidden','/',3);
         }
       
         if( C('USE_SPHINX') ){
@@ -97,7 +96,6 @@ class IndexController extends HomeController {
         ))->find();
         if( !$data ){
             $this->error('403 Forbidden','/',3);
-            return ;
         }        
         $recKeys = C('RECOMMEND_KEYS');
         $topic = M('search_topic')->order('hits desc,update_time desc')->limit(20)->select();
