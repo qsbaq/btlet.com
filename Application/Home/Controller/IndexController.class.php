@@ -42,7 +42,9 @@ class IndexController extends HomeController {
         }
       
         if( C('USE_SPHINX') ){
-            import('Vendor.Sphinx');
+            if( ! class_exists('SphinxClient',false)){
+                import('Vendor.Sphinx');
+            }
             $nowPage = I('p');//当前页
             import('ORG.Util.Page');
             $listRows = C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
