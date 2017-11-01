@@ -51,7 +51,7 @@ func main() {
 
 	stmtU, err := db.Prepare(`UPDATE laoji_infohash SET hits=hits+1,update_time=? WHERE infohash=?`)
 	checkErr(err)
-	defer stmtS.Close()
+	defer stmtU.Close()
 
 	stmtI, err := db.Prepare(`INSERT laoji_infohash (infohash,name,files,update_time) values (?,?,?,?)`)
 	checkErr(err)
